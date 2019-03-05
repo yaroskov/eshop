@@ -16,53 +16,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <div class="col-md-3">
 
-                            @if(isset($manufacturers))
-                                <select class="form-control mb-3">
-                                    @foreach($manufacturers as $manufacturer)
-                                        <option>{{$manufacturer->name}}</option>
-                                    @endforeach
-                                </select>
-                            @endif
-
-                            @if(isset($products))
-                                <select class="form-control mb-3">
-                                    @foreach($products as $product)
-                                        <option>{{$product->name}}</option>
-                                    @endforeach
-                                </select>
-                            @endif
-                        </div>
-
-                        @if(isset($storage))
-                            <div class="col-md-3 mb-3">
-                                <h6>Storage</h6>
-
-                                @for($i = 0; $i < count($storage); $i++)
-                                    <div class="form-check ">
-                                        <input class="form-check-input" type="checkbox" id="colorsCheck{{$i}}" value="option1">
-                                        <label class="form-check-label" for="colorsCheck{{$i}}">{{$storage[$i]->value}}</label>
-                                    </div>
-                                @endfor
-                            </div>
-                        @endif
-
-                        @if(isset($colors))
-                            <div class="col-md-3 mb-3">
-                                <h6>Colors</h6>
-
-                                @for($i = 0; $i < count($colors); $i++)
-                                    <div class="form-check ">
-                                        <input class="form-check-input" type="checkbox" id="colorsCheck{{$i}}" value="option1">
-                                        <label class="form-check-label" for="colorsCheck{{$i}}">{{$colors[$i]->color}}</label>
-                                    </div>
-                                @endfor
-                            </div>
-                        @endif
-
-                    </div>
                 </form>
 
                 <div id="carouselExampleIndicators" class="carousel slide mb-3" data-ride="carousel">
@@ -92,29 +46,83 @@
                     </a>
                 </div>
 
-                <h2 class="mb-3">
-                    Popular items...
-                </h2>
+                <div class="row">
+                    <div class="col-md-3"></div>
 
-                <div id="output">
-                    @if(isset($products))
-                        @foreach($products as $product)
-                            <div class="card text-white bg-primary mb-3">
-                                <div class="row no-gutters">
-                                    <div class="col-md-4">
-                                        <img src="img/n4.jpg" class="card-img" alt="...">
+                    <div class="col-md-9">
+                        <h2 class="mb-3">
+                            Popular items...
+                        </h2>
+                    </div>
+                </div>
+
+                <div id="output" class="row">
+                    <div class="col-md-3">
+                        <div class="">
+                            @if(isset($manufacturers))
+                                <select class="form-control mb-3">
+                                    @foreach($manufacturers as $manufacturer)
+                                        <option>{{$manufacturer->name}}</option>
+                                    @endforeach
+                                </select>
+                            @endif
+
+                            @if(isset($products))
+                                <select class="form-control mb-3">
+                                    @foreach($products as $product)
+                                        <option>{{$product->name}}</option>
+                                    @endforeach
+                                </select>
+                            @endif
+                        </div>
+
+                        @if(isset($storage))
+                            <div class="mb-3">
+                                <h6>Storage</h6>
+
+                                @for($i = 0; $i < count($storage); $i++)
+                                    <div class="form-check ">
+                                        <input class="form-check-input" type="checkbox" id="storageCheck{{$i}}" value="option1">
+                                        <label class="form-check-label" for="storageCheck{{$i}}">{{$storage[$i]->value}}</label>
                                     </div>
-                                    <div class="col-md-8">
-                                        <div class="card-header">Header</div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{$product->name}}</h5>
-                                            <p class="card-text">{{$product->description}}</p>
+                                @endfor
+                            </div>
+                        @endif
+
+                        @if(isset($colors))
+                            <div class="mb-3">
+                                <h6>Colors</h6>
+
+                                @for($i = 0; $i < count($colors); $i++)
+                                    <div class="form-check ">
+                                        <input class="form-check-input" type="checkbox" id="colorsCheck{{$i}}" value="option1">
+                                        <label class="form-check-label" for="colorsCheck{{$i}}">{{$colors[$i]->color}}</label>
+                                    </div>
+                                @endfor
+                            </div>
+                        @endif
+                    </div>
+
+                    <div class="col-md-9">
+                        @if(isset($products))
+                            @foreach($products as $product)
+                                <div class="card text-white bg-primary mb-3">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-4">
+                                            <img src="img/n4.jpg" class="card-img" alt="...">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-header">Header</div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{$product->name}}</h5>
+                                                <p class="card-text">{{$product->description}}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
-                    @endif
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

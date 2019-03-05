@@ -29,10 +29,10 @@
                     <a class="nav-link" href="/search">Search (delete)</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Cart</a>
+                    <a class="nav-link" href="/cart">Cart</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">My account</a>
+                    <a class="nav-link" href="/profile">My profile</a>
                 </li>
             </ul>
 

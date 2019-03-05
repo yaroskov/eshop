@@ -27,6 +27,24 @@ class PagesController extends Controller
         return view('pages.main.index')->with($data);
     }
 
+    public function cart()
+    {
+
+        return view('pages.main.cart');
+    }
+
+    public function profile()
+    {
+
+        return view('pages.main.profile');
+    }
+
+    public function product()
+    {
+
+        return view('pages.main.product');
+    }
+
     public function search()
     {
         return view('pages.search');

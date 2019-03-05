@@ -18,5 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/main', 'PagesController@index');
+Route::get('/cart', 'PagesController@cart');
+Route::get('/profile', 'PagesController@profile');
+Route::get('/product', 'PagesController@product');
+
 Route::get('/search', 'PagesController@search');
