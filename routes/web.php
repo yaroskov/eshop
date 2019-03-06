@@ -23,5 +23,6 @@ Route::get('/main', 'PagesController@index');
 Route::get('/cart', 'PagesController@cart');
 Route::get('/profile', 'PagesController@profile');
 Route::get('/product', 'PagesController@product');
-
 Route::get('/search', 'PagesController@search');
+
+Route::get('/admin', 'AdminController@index');

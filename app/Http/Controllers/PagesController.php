@@ -24,29 +24,29 @@ class PagesController extends Controller
             'manufacturers' => Manufacturer::orderBy('id', 'desc')->get(),
         );
 
-        return view('pages.main.index')->with($data);
+        return view('pages.market.index')->with($data);
     }
 
     public function cart()
     {
 
-        return view('pages.main.cart');
+        return view('pages.market.cart');
     }
 
     public function profile()
     {
 
-        return view('pages.main.profile');
+        return view('pages.market.profile');
     }
 
     public function product()
     {
 
-        return view('pages.main.product');
+        return view('pages.market.product');
     }
 
     public function search()
     {
-        return view('pages.search');
+        return view('pages.market.search');
     }
 }
