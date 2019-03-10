@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class StorageCapacityTable extends Migration
+class SectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class StorageCapacityTable extends Migration
      */
     public function up()
     {
-        Schema::create('storage_capacity', function (Blueprint $table) {
+        Schema::create('sections', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('value')->unique();
+            $table->integer('section_id');
+            $table->string('value')->unique();
         });
     }
 
@@ -26,6 +27,6 @@ class StorageCapacityTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('storage_capacity');
+        Schema::dropIfExists('sections');
     }
 }

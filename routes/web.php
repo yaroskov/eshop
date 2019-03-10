@@ -17,12 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/main', 'PagesController@index');
+Route::get('/', 'PagesController@index');
 Route::get('/cart', 'PagesController@cart');
 Route::get('/profile', 'PagesController@profile');
 Route::get('/product', 'PagesController@product');
 Route::get('/search', 'PagesController@search');
+
+Route::get('/add-manufacturer', 'AdminController@addManufacturer');
 
 Route::get('/admin', 'AdminController@index');

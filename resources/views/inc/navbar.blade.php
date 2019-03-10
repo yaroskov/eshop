@@ -23,11 +23,11 @@
                     {{--<a class="nav-link" href="/home">Home  (delete)</a>--}}
                 {{--</li>--}}
                 <li class="nav-item">
-                    <a class="nav-link" href="/main">Main (rename to Market)</a>
+                    <a class="nav-link" href="/">Market</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/search">Search (delete)</a>
-                </li>
+                {{--<li class="nav-item">--}}
+                    {{--<a class="nav-link" href="/search">Search (delete)</a>--}}
+                {{--</li>--}}
                 <li class="nav-item">
                     <a class="nav-link" href="/cart">Cart</a>
                 </li>

@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\DB;
 
 class ProductsSeeder extends Seeder
 {
+    public $data_array = array(
+
+    );
+
     /**
      * Run the database seeds.
      *
@@ -17,7 +21,7 @@ class ProductsSeeder extends Seeder
             'name' => Str::random(15),
             'description' => Str::random(100),
             'manufacturers_id' => rand(1, 2),
-            'storage_capacity_id' => rand(1, 4),
+            'section_id' => rand(1, 4),
             'colors_id' => rand(1, 3),
         ]);
     }

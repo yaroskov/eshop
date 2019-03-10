@@ -20,7 +20,7 @@ class PagesController extends Controller
         $data = array(
             'products' => Product::orderBy('id', 'desc')->take(10)->get(),
             'colors' => Color::orderBy('id', 'desc')->get(),
-            'storage' => StorageCapacity::orderBy('id', 'desc')->get(),
+            //'storage' => StorageCapacity::orderBy('id', 'desc')->get(),
             'manufacturers' => Manufacturer::orderBy('id', 'desc')->get(),
         );
 
