@@ -26,5 +26,9 @@ Route::get('/product', 'PagesController@product');
 Route::get('/search', 'PagesController@search');
 
 Route::get('/add-manufacturer', 'AdminController@addManufacturer');
+Route::get('/delete-manufacturer', 'AdminController@deleteManufacturer');
+
+Route::get('/register-user', 'AdminController@registerUser');
+Route::get('/delete-user', 'AdminController@deleteUser');
 
 Route::get('/admin', 'AdminController@index');

@@ -29,62 +29,20 @@
                     <div class="col-9">
                         <div class="tab-content" id="v-pills-tabContent">
                             <div class="tab-pane fade show active" id="v-pills-users" role="tabpanel" aria-labelledby="v-pills-users-tab">
-                                Users
 
+                                <h3>Users</h3>
 
-                                @if(isset($users))
-                                    <table class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Username</th>
-                                            <th scope="col">E-mail</th>
-                                            <th scope="col">User Type</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($users as $i => $user)
-                                                <tr>
-                                                    <th scope="row">{{$i + 1}}</th>
-                                                    <td>{{$user->name}}</td>
-                                                    <td>{{$user->email}}</td>
-                                                    <td>
-                                                        <select class="form-control">
-                                                            <option>
-                                                                @if($user->is_admin)
-                                                                    Admin
-                                                                @else
-                                                                    User
-                                                                @endif
-                                                            </option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-primary">Delete</button>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                @endif
-
+                                <div id="usersTable">
+                                    @include('pages.admin.users-table')
+                                </div>
 
                                 <div class="card-body">
-                                    <form method="POST" action="{{ route('register') }}">
-                                        @csrf
-
+                                    <form>
                                         <div class="form-group row">
                                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                                             <div class="col-md-6">
-                                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                                                @if ($errors->has('name'))
-                                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                                @endif
+                                                <input id="name" type="text" class="form-control" name="name" required autofocus>
                                             </div>
                                         </div>
 
@@ -92,13 +50,7 @@
                                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                                             <div class="col-md-6">
-                                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                                @if ($errors->has('email'))
-                                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                                @endif
+                                                <input id="email" type="email" class="form-control" name="email" required>
                                             </div>
                                         </div>
 
@@ -106,80 +58,96 @@
                                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                             <div class="col-md-6">
-                                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                                @if ($errors->has('password'))
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('password') }}</strong>
-                                                    </span>
-                                                @endif
+                                                <input id="password" type="password" class="form-control" name="password" required>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                            <label for="userType" class="col-md-4 col-form-label text-md-right">{{ __('User Type') }}</label>
 
                                             <div class="col-md-6">
-                                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                                <select id="userType" class="form-control">
+                                                    <option value="user" selected>User</option>
+                                                    <option value="admin">Admin</option>
+                                                </select>
                                             </div>
                                         </div>
 
                                         <div class="form-group row mb-0">
                                             <div class="col-md-6 offset-md-4">
-                                                <button type="submit" class="btn btn-primary">
-                                                    {{ __('Register') }}
+                                                <button id="register-user" type="button" class="btn btn-primary">
+                                                    {{ __('Register New') }}
                                                 </button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-
-
-
                             </div>
+
                             <div class="tab-pane fade" id="v-pills-manufacturers" role="tabpanel" aria-labelledby="v-pills-manufacturers-tab">
-                                Manufacturers
 
-                                @if(isset($manufacturers) && count($manufacturers) > 0)
-                                    <table class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Added at</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($manufacturers as $i => $manufacturer)
-                                                <tr>
-                                                    <th scope="row">{{$i + 1}}</th>
-                                                    <td>{{$manufacturer->name}}</td>
-                                                    <td>{{$manufacturer->added_at}}</td>
-                                                    <td><button class="btn btn-primary">Delete</button></td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                @endif
+                                <h3 class="mb-3">Manufacturers</h3>
 
-                                <form>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <input type="text" class="form-control" id="inputManufacturer" placeholder="Manufacturer">
+                                <div id="manufacturersTable">
+                                    @include('pages.admin.data-table')
+                                </div>
+
+                                <div class="card-body">
+                                    <form>
+                                        <div class="form-group row justify-content-center">
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="inputManufacturer" placeholder="Manufacturer">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button id="addManufacturer" type="button" class="btn btn-primary">Add</button>
+                                            </div>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <button id="addManufacturer" type="button" class="btn btn-primary">Add</button>
-                                        </div>
-                                    </div>
-                                </form>
-
+                                    </form>
+                                </div>
                             </div>
+
                             <div class="tab-pane fade" id="v-pills-sections" role="tabpanel" aria-labelledby="v-pills-sections-tab">
-                                Sections
+
+                                <h3 class="mb-3">Sections</h3>
+
+                                {{--<div id="manufacturersTable">--}}
+                                    {{--@include('pages.admin.data-table')--}}
+                                {{--</div>--}}
+
+                                {{--<div class="card-body">--}}
+                                    {{--<form>--}}
+                                        {{--<div class="form-group row justify-content-center">--}}
+                                            {{--<div class="col-md-6">--}}
+                                                {{--<input type="text" class="form-control" id="inputManufacturer" placeholder="Manufacturer">--}}
+                                            {{--</div>--}}
+                                            {{--<div class="col-md-2">--}}
+                                                {{--<button id="addManufacturer" type="button" class="btn btn-primary">Add</button>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</form>--}}
+                                {{--</div>--}}
                             </div>
+
                             <div class="tab-pane fade" id="v-pills-colors" role="tabpanel" aria-labelledby="v-pills-colors-tab">
-                                Colors
+
+                                <h3 class="mb-3">Colors</h3>
+
+                                <div id="manufacturersTable" class="resultsTable">
+                                    @include('pages.admin.colors-table')
+                                </div>
+
+                                <div class="card-body">
+                                    <form>
+                                        <div class="form-group row justify-content-center">
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="inputColor" placeholder="Color">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button id="addColor" type="button" class="btn btn-primary">Add</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
