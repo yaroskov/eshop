@@ -32,7 +32,7 @@
 
                                 <h3>Users</h3>
 
-                                <div id="usersTable">
+                                <div class="resultsBlock">
                                     @include('pages.admin.users-table')
                                 </div>
 
@@ -88,7 +88,7 @@
 
                                 <h3 class="mb-3">Manufacturers</h3>
 
-                                <div id="manufacturersTable">
+                                <div class="resultsBlock">
                                     @include('pages.admin.data-table')
                                 </div>
 
@@ -110,29 +110,13 @@
 
                                 <h3 class="mb-3">Sections</h3>
 
-                                {{--<div id="manufacturersTable">--}}
-                                    {{--@include('pages.admin.data-table')--}}
-                                {{--</div>--}}
-
-                                {{--<div class="card-body">--}}
-                                    {{--<form>--}}
-                                        {{--<div class="form-group row justify-content-center">--}}
-                                            {{--<div class="col-md-6">--}}
-                                                {{--<input type="text" class="form-control" id="inputManufacturer" placeholder="Manufacturer">--}}
-                                            {{--</div>--}}
-                                            {{--<div class="col-md-2">--}}
-                                                {{--<button id="addManufacturer" type="button" class="btn btn-primary">Add</button>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</form>--}}
-                                {{--</div>--}}
                             </div>
 
                             <div class="tab-pane fade" id="v-pills-colors" role="tabpanel" aria-labelledby="v-pills-colors-tab">
 
                                 <h3 class="mb-3">Colors</h3>
 
-                                <div id="manufacturersTable" class="resultsTable">
+                                <div class="resultsBlock">
                                     @include('pages.admin.colors-table')
                                 </div>
 

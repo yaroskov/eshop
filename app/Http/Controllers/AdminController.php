@@ -21,6 +21,43 @@ class AdminController extends Controller
         return view('pages.admin.index')->with($data);
     }
 
+    public function addColor(Request $request)
+    {
+        if ($request->has('data')) {
+
+            $data = $request->get('data');
+
+            $clr = new Color();
+            $clr->color = $data;
+            $clr->save();
+
+            $colors = Color::orderBy('id', 'desc')->get();
+            $view = view('pages.admin.colors-table')->with('colors', $colors)->render();
+
+            return response()->json(['view' => $view]);
+        }
+
+        return 'empty';
+    }
+
+    public function deleteColor(Request $request)
+    {
+        if ($request->has('id')) {
+
+            $id = $request->get('id');
+
+            $man = Color::find($id);
+            $man->delete();
+
+            $manufacturers = Color::orderBy('id', 'desc')->get();
+            $view = view('pages.admin.colors-table')->with('colors', $manufacturers)->render();
+
+            return response()->json(['view' => $view]);
+        }
+
+        return 'empty';
+    }
+
     public function addManufacturer(Request $request)
     {
         if ($request->has('data')) {
@@ -86,8 +123,8 @@ class AdminController extends Controller
 
             $id = $request->get('id');
 
-            $man = User::find($id);
-            $man->delete();
+            $obj = User::find($id);
+            $obj->delete();
 
             $users = User::orderBy('id', 'desc')->get();
             $view = view('pages.admin.users-table')->with('users', $users)->render();

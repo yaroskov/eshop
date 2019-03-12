@@ -94,30 +94,13 @@
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  $('#addManufacturer').on('click', function () {
-    var data = $(this).parents('.form-group').find('input').val();
-    $.ajax({
-      type: 'GET',
-      url: 'add-manufacturer',
-      data: {
-        data: data
-      },
-      contentType: 'application/json',
-      success: function success(data) {
-        console.log(data.data);
-        $('#manufacturersTable').html(data.view);
-      }
-    });
-  });
-  $('body').on('click', '.delete-manufacturer, .delete-user', function () {
-    var id = $(this).data('id');
+  addRow('#addManufacturer', 'add-manufacturer');
+  addRow('#addColor', 'add-color');
+  deleteRow();
+  registerUser();
+});
 
-    if ($(this).hasClass('delete-user')) {
-      deleteRow(id, 'delete-user', '#usersTable');
-    } else {
-      deleteRow(id, 'delete-manufacturer', '#manufacturersTable');
-    }
-  });
+function registerUser() {
   $('#register-user').on('click', function () {
     var data = {
       name: $('#name').val(),
@@ -136,21 +119,42 @@ $(document).ready(function () {
       }
     });
   });
-});
+}
 
-function addRow() {}
+function addRow(dom, url) {
+  $(dom).on('click', function () {
+    var data = $(this).parents('.form-group').find('input').val();
+    var resultsBlock = $(this).parents('.tab-pane').find('.resultsBlock');
+    $.ajax({
+      type: 'GET',
+      url: url,
+      data: {
+        data: data
+      },
+      contentType: 'application/json',
+      success: function success(data) {
+        resultsBlock.html(data.view);
+      }
+    });
+  });
+}
 
-function deleteRow(id, url, resultsBlock) {
-  $.ajax({
-    type: 'GET',
-    url: url,
-    data: {
-      id: id
-    },
-    contentType: 'application/json',
-    success: function success(data) {
-      $(resultsBlock).html(data.view);
-    }
+function deleteRow() {
+  $('body').on('click', '.delete-row', function () {
+    var url = $(this).data('url');
+    var id = $(this).data('id');
+    var resultsBlock = $(this).parents('.resultsBlock');
+    $.ajax({
+      type: 'GET',
+      url: url,
+      data: {
+        id: id
+      },
+      contentType: 'application/json',
+      success: function success(data) {
+        resultsBlock.html(data.view);
+      }
+    });
   });
 }
 

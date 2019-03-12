@@ -15,7 +15,7 @@
                 <td>{{$manufacturer->name}}</td>
                 <td>{{$manufacturer->added_at}}</td>
                 <td>
-                    <button class="btn btn-primary delete-manufacturer" data-id="{{$manufacturer->id}}">Delete</button>
+                    <button class="btn btn-primary delete-row" data-url="delete-manufacturer" data-id="{{$manufacturer->id}}">Delete</button>
                 </td>
             </tr>
         @endforeach

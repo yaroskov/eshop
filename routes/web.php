@@ -28,6 +28,10 @@ Route::get('/search', 'PagesController@search');
 Route::get('/add-manufacturer', 'AdminController@addManufacturer');
 Route::get('/delete-manufacturer', 'AdminController@deleteManufacturer');
 
+Route::get('/add-color', 'AdminController@addColor');
+Route::get('/delete-color', 'AdminController@deleteColor');
+
+
 Route::get('/register-user', 'AdminController@registerUser');
 Route::get('/delete-user', 'AdminController@deleteUser');
 

@@ -13,7 +13,7 @@
                 <th scope="row">{{$i + 1}}</th>
                 <td>{{$color->color}}</td>
                 <td>
-                    <button class="btn btn-primary delete-manufacturer" data-id="{{$color->id}}">Delete</button>
+                    <button class="btn btn-primary delete-row" data-url="delete-color" data-id="{{$color->id}}">Delete</button>
                 </td>
             </tr>
         @endforeach
