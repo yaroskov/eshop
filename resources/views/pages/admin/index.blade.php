@@ -99,7 +99,7 @@
                                                 <input type="text" class="form-control" id="inputManufacturer" placeholder="Manufacturer">
                                             </div>
                                             <div class="col-md-2">
-                                                <button id="addManufacturer" type="button" class="btn btn-primary">Add</button>
+                                                <button type="button" class="btn btn-primary add-row" data-url="add-manufacturer">Add</button>
                                             </div>
                                         </div>
                                     </form>
@@ -109,6 +109,23 @@
                             <div class="tab-pane fade" id="v-pills-sections" role="tabpanel" aria-labelledby="v-pills-sections-tab">
 
                                 <h3 class="mb-3">Sections</h3>
+
+                                <div class="resultsBlock">
+                                    @include('pages.admin.sections-table')
+                                </div>
+
+                                <div class="card-body">
+                                    <form>
+                                        <div class="form-group row justify-content-center">
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="inputColor" placeholder="Section">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-primary add-row" data-url="add-section">Add</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
 
                             </div>
 
@@ -127,11 +144,12 @@
                                                 <input type="text" class="form-control" id="inputColor" placeholder="Color">
                                             </div>
                                             <div class="col-md-2">
-                                                <button id="addColor" type="button" class="btn btn-primary">Add</button>
+                                                <button type="button" class="btn btn-primary add-row" data-url="add-color">Add</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
+
                             </div>
                         </div>
                     </div>

@@ -31,8 +31,10 @@ Route::get('/delete-manufacturer', 'AdminController@deleteManufacturer');
 Route::get('/add-color', 'AdminController@addColor');
 Route::get('/delete-color', 'AdminController@deleteColor');
 
-
 Route::get('/register-user', 'AdminController@registerUser');
 Route::get('/delete-user', 'AdminController@deleteUser');
+
+Route::get('/add-section', 'AdminController@addSection');
+Route::get('/delete-section', 'AdminController@deleteSection');
 
 Route::get('/admin', 'AdminController@index');

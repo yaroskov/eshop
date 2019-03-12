@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Manufacturer;
 use App\Color;
+use App\Section;
 
 class AdminController extends Controller
 {
@@ -16,9 +17,48 @@ class AdminController extends Controller
             'users' => User::orderBy('id', 'desc')->get(),
             'manufacturers' => Manufacturer::orderBy('id', 'desc')->get(),
             'colors' => Color::orderBy('id', 'desc')->get(),
+            'sections' => Section::orderBy('id', 'desc')->get(),
         );
 
         return view('pages.admin.index')->with($data);
+    }
+
+    public function addSection(Request $request)
+    {
+        if ($request->has('data')) {
+
+            $data = $request->get('data');
+
+            $section = new Section();
+            $section->section_id = 0;
+            $section->value = $data;
+            $section->save();
+
+            $sections = Section::orderBy('id', 'desc')->get();
+            $view = view('pages.admin.sections-table')->with('sections', $sections)->render();
+
+            return response()->json(['view' => $view]);
+        }
+
+        return 'empty';
+    }
+
+    public function deleteSection(Request $request)
+    {
+        if ($request->has('id')) {
+
+            $id = $request->get('id');
+
+            $obj = Section::find($id);
+            $obj->delete();
+
+            $sections = Section::orderBy('id', 'desc')->get();
+            $view = view('pages.admin.sections-table')->with('sections', $sections)->render();
+
+            return response()->json(['view' => $view]);
+        }
+
+        return 'empty';
     }
 
     public function addColor(Request $request)

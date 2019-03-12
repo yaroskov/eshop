@@ -16,7 +16,7 @@ class SectionsTable extends Migration
         Schema::create('sections', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('section_id');
-            $table->string('value')->unique();
+            $table->string('value');
         });
     }
 

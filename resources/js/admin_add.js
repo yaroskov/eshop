@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
-   addRow('#addManufacturer', 'add-manufacturer');
-   addRow('#addColor', 'add-color');
+   addRow();
 
    deleteRow();
 
@@ -33,9 +32,11 @@ function registerUser() {
    });
 }
 
-function addRow(dom, url) {
+function addRow() {
 
-   $(dom).on('click', function () {
+   $('.add-row').on('click', function () {
+
+      var url = $(this).data('url');
 
       var data = $(this).parents('.form-group').find('input').val();
 

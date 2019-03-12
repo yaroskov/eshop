@@ -94,8 +94,7 @@
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  addRow('#addManufacturer', 'add-manufacturer');
-  addRow('#addColor', 'add-color');
+  addRow();
   deleteRow();
   registerUser();
 });
@@ -121,8 +120,9 @@ function registerUser() {
   });
 }
 
-function addRow(dom, url) {
-  $(dom).on('click', function () {
+function addRow() {
+  $('.add-row').on('click', function () {
+    var url = $(this).data('url');
     var data = $(this).parents('.form-group').find('input').val();
     var resultsBlock = $(this).parents('.tab-pane').find('.resultsBlock');
     $.ajax({
