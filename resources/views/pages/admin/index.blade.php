@@ -24,6 +24,9 @@
                             <a class="nav-link" id="v-pills-colors-tab" data-toggle="pill" href="#v-pills-colors" role="tab" aria-controls="v-pills-colors" aria-selected="true">
                                 Colors
                             </a>
+                            <a class="nav-link" id="v-pills-products-tab" data-toggle="pill" href="#v-pills-products" role="tab" aria-controls="v-pills-products" aria-selected="true">
+                                Products
+                            </a>
                         </div>
                     </div>
                     <div class="col-9">
@@ -151,6 +154,42 @@
                                 </div>
 
                             </div>
+
+                            <div class="tab-pane fade" id="v-pills-products" role="tabpanel" aria-labelledby="v-pills-products-tab">
+
+                                <h3 class="mb-3">Products</h3>
+
+                                <ul class="nav nav-tabs mb-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#">Active</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Hidden</a>
+                                    </li>
+                                </ul>
+
+                                <ul class="nav nav-pills justify-content-center mb-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#">Date <span>▾</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Popularity <span>▾</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Cost <span>▾</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Count <span>▾</span></a>
+                                    </li>
+                                </ul>
+
+                                <div class="resultsBlock">
+                                    @include('pages.admin.tables.products')
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>

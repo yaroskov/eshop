@@ -1,0 +1,24 @@
+.preset-box {
+  width: 30px;
+  height: 30px;
+  //display: inline-block;
+  //margin: 0 2px;
+  //padding: 0;
+  //border: 2px solid #b3b3b3;
+  border-radius: 6px;
+  //background: white;
+}
+
+.list-menu {
+  li {
+    display: inline-block;
+    margin: 0 2px;
+    padding: 0 8px;
+    list-style-type: none;
+    //border: 2px solid #b3b3b3;
+    //border-radius: 6px;
+    background: white;
+    //border: 2px solid transparent;
+    vertical-align: middle;
+  }
+}

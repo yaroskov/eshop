@@ -10655,6 +10655,21 @@ a.text-dark:focus {
   }
 }
 
+.preset-box {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+}
+
+.list-menu li {
+  display: inline-block;
+  margin: 0 2px;
+  padding: 0 8px;
+  list-style-type: none;
+  background: white;
+  vertical-align: middle;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

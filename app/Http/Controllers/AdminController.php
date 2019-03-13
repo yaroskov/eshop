@@ -8,6 +8,7 @@ use App\User;
 use App\Manufacturer;
 use App\Color;
 use App\Section;
+use App\Product;
 
 class AdminController extends Controller
 {
@@ -20,6 +21,7 @@ class AdminController extends Controller
             'manufacturers' => Manufacturer::orderBy('id', 'desc')->get(),
             'colors' => Color::orderBy('id', 'desc')->get(),
             'sections' => Section::orderBy('id', 'desc')->get(),
+            'products' => Product::orderBy('id', 'desc')->get(),
         );
 
         return view('pages.admin.index')->with($data);

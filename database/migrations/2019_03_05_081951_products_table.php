@@ -20,7 +20,7 @@ class ProductsTable extends Migration
             $table->integer('colors_id');
             $table->string('name');
             $table->text('description');
-            $table->timestamp('added_at')->nullable();
+            $table->timestamp('added_at');
         });
     }
 
