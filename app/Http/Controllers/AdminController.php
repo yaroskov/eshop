@@ -11,6 +11,8 @@ use App\Section;
 
 class AdminController extends Controller
 {
+    protected $tablesPath = 'pages.admin.tables.';
+
     public function index()
     {
         $data = array(
@@ -25,17 +27,15 @@ class AdminController extends Controller
 
     public function addSection(Request $request)
     {
-        if ($request->has('data')) {
-
-            $data = $request->get('data');
+        if ($request->has('data') && $request->has('sectionId')) {
 
             $section = new Section();
-            $section->section_id = 0;
-            $section->value = $data;
+            $section->section_id = $request->get('sectionId');
+            $section->value = $request->get('data');
             $section->save();
 
             $sections = Section::orderBy('id', 'desc')->get();
-            $view = view('pages.admin.sections-table')->with('sections', $sections)->render();
+            $view = view($this->tablesPath . 'sections-table')->with('sections', $sections)->render();
 
             return response()->json(['view' => $view]);
         }
@@ -53,7 +53,7 @@ class AdminController extends Controller
             $obj->delete();
 
             $sections = Section::orderBy('id', 'desc')->get();
-            $view = view('pages.admin.sections-table')->with('sections', $sections)->render();
+            $view = view($this->tablesPath . 'sections-table')->with('sections', $sections)->render();
 
             return response()->json(['view' => $view]);
         }
@@ -72,7 +72,7 @@ class AdminController extends Controller
             $clr->save();
 
             $colors = Color::orderBy('id', 'desc')->get();
-            $view = view('pages.admin.colors-table')->with('colors', $colors)->render();
+            $view = view($this->tablesPath . 'colors-table')->with('colors', $colors)->render();
 
             return response()->json(['view' => $view]);
         }
@@ -90,7 +90,7 @@ class AdminController extends Controller
             $man->delete();
 
             $manufacturers = Color::orderBy('id', 'desc')->get();
-            $view = view('pages.admin.colors-table')->with('colors', $manufacturers)->render();
+            $view = view($this->tablesPath . 'colors-table')->with('colors', $manufacturers)->render();
 
             return response()->json(['view' => $view]);
         }
@@ -109,7 +109,7 @@ class AdminController extends Controller
             $man->save();
 
             $manufacturers = Manufacturer::orderBy('id', 'desc')->get();
-            $view = view('pages.admin.data-table')->with('manufacturers', $manufacturers)->render();
+            $view = view($this->tablesPath . 'data-table')->with('manufacturers', $manufacturers)->render();
 
             return response()->json(['data' => $data, 'view' => $view]);
         }
@@ -127,7 +127,7 @@ class AdminController extends Controller
             $man->delete();
 
             $manufacturers = Manufacturer::orderBy('id', 'desc')->get();
-            $view = view('pages.admin.data-table')->with('manufacturers', $manufacturers)->render();
+            $view = view($this->tablesPath . 'data-table')->with('manufacturers', $manufacturers)->render();
 
             return response()->json(['view' => $view]);
         }
@@ -152,7 +152,7 @@ class AdminController extends Controller
         $user->save();
 
         $users = User::orderBy('id', 'desc')->get();
-        $view = view('pages.admin.users-table')->with('users', $users)->render();
+        $view = view($this->tablesPath . 'users-table')->with('users', $users)->render();
 
         return response()->json(['view' => $view]);
     }
@@ -167,7 +167,7 @@ class AdminController extends Controller
             $obj->delete();
 
             $users = User::orderBy('id', 'desc')->get();
-            $view = view('pages.admin.users-table')->with('users', $users)->render();
+            $view = view($this->tablesPath . 'users-table')->with('users', $users)->render();
 
             return response()->json(['view' => $view]);
         }

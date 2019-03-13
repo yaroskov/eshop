@@ -33,7 +33,7 @@
                                 <h3>Users</h3>
 
                                 <div class="resultsBlock">
-                                    @include('pages.admin.users-table')
+                                    @include('pages.admin.tables.users-table')
                                 </div>
 
                                 <div class="card-body">
@@ -89,14 +89,14 @@
                                 <h3 class="mb-3">Manufacturers</h3>
 
                                 <div class="resultsBlock">
-                                    @include('pages.admin.data-table')
+                                    @include('pages.admin.tables.data-table')
                                 </div>
 
                                 <div class="card-body">
                                     <form>
                                         <div class="form-group row justify-content-center">
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control" id="inputManufacturer" placeholder="Manufacturer">
+                                                <input type="text" class="form-control" placeholder="Manufacturer">
                                             </div>
                                             <div class="col-md-2">
                                                 <button type="button" class="btn btn-primary add-row" data-url="add-manufacturer">Add</button>
@@ -111,14 +111,14 @@
                                 <h3 class="mb-3">Sections</h3>
 
                                 <div class="resultsBlock">
-                                    @include('pages.admin.sections-table')
+                                    @include('pages.admin.tables.sections-table')
                                 </div>
 
                                 <div class="card-body">
                                     <form>
                                         <div class="form-group row justify-content-center">
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control" id="inputColor" placeholder="Section">
+                                                <input type="text" class="form-control" placeholder="Section">
                                             </div>
                                             <div class="col-md-2">
                                                 <button type="button" class="btn btn-primary add-row" data-url="add-section">Add</button>
@@ -134,14 +134,14 @@
                                 <h3 class="mb-3">Colors</h3>
 
                                 <div class="resultsBlock">
-                                    @include('pages.admin.colors-table')
+                                    @include('pages.admin.tables.colors-table')
                                 </div>
 
                                 <div class="card-body">
                                     <form>
                                         <div class="form-group row justify-content-center">
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control" id="inputColor" placeholder="Color">
+                                                <input type="text" class="form-control" placeholder="Color">
                                             </div>
                                             <div class="col-md-2">
                                                 <button type="button" class="btn btn-primary add-row" data-url="add-color">Add</button>

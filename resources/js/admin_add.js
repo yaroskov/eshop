@@ -2,6 +2,8 @@ $(document).ready(function() {
 
    addRow();
 
+   addSubRow();
+
    deleteRow();
 
    registerUser();
@@ -36,22 +38,39 @@ function addRow() {
 
    $('.add-row').on('click', function () {
 
-      var url = $(this).data('url');
+      this.sectionId = 0;
 
-      var data = $(this).parents('.form-group').find('input').val();
+      addRowProcess(this);
+   });
+}
 
-      var resultsBlock = $(this).parents('.tab-pane').find('.resultsBlock');
+function addSubRow() {
 
-      $.ajax({
-         type: 'GET',
-         url: url,
-         data: {data: data},
-         contentType: 'application/json',
-         success: function (data) {
+   $('.resultsBlock').on('click', '.add-sub-row', function () {
 
-            resultsBlock.html(data.view);
-         }
-      });
+      this.sectionId = $(this).data('section-id');
+
+      addRowProcess(this);
+   });
+}
+
+function addRowProcess(event){
+
+   var url = $(event).data('url');
+
+   var data = $(event).parents('.form-group').find('input').val();
+
+   var resultsBlock = $(event).parents('.tab-pane').find('.resultsBlock');
+
+   $.ajax({
+      type: 'GET',
+      url: url,
+      data: {data: data, sectionId: event.sectionId},
+      contentType: 'application/json',
+      success: function (data) {
+
+         resultsBlock.html(data.view);
+      }
    });
 }
 
