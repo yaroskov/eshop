@@ -12,7 +12,7 @@ class SectionsController extends Controller
     {
         $sections = Section::orderBy('id', 'desc')->get();
 
-        return view('admin.pages.users')->with('sections', $sections);
+        return view('admin.pages.sections')->with('sections', $sections);
     }
 
     public function addSection(Request $request)
