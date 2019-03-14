@@ -3,7 +3,7 @@
         <div class="card mb-3" style="">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img src="img/no-image.png" class="card-img" alt="...">
+                    <img src="/img/no-image.png" class="card-img" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -35,7 +35,7 @@
                                 <table class="table table-borderless mb-1">
                                     <thead>
                                     <tr>
-                                        <th class="p-1" colspan="3">Count:</th>
+                                        <th class="p-1" colspan="3">Count: 777</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -48,6 +48,11 @@
                                         <td class="p-1"><div class="preset-box bg-success"></div></td>
                                         <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="666"></td>
                                         <td class="p-1"><button class="btn btn-sm btn-primary">Apply</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-1"><div class="preset-box bg-success"></div></td>
+                                        <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="666"></td>
+                                        <td class="p-1"><button class="btn btn-sm btn-success">+</button></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -63,11 +68,12 @@
                                 <table class="table table-borderless mb-1">
                                     <thead>
                                     <tr>
-                                        <th class="p-1" colspan="2">Cost:</th>
+                                        <th class="p-1" colspan="3">Cost: $666</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
+                                        <td class="p-1">$</td>
                                         <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="666"></td>
                                         <td class="p-1"><button class="btn btn-sm btn-primary">Apply</button></td>
                                     </tr>

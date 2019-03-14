@@ -93,7 +93,20 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/home/vagrant/projects/eshop/resources/js/menu-url.js'");
+$(document).ready(function () {
+  menuUrl('#menu-url');
+});
+
+function menuUrl(selector) {
+  var url = window.location.pathname;
+  $(selector).find('a').each(function () {
+    if (url == $(this).attr('href')) {
+      $(this).addClass('active');
+    } else {
+      $(this).removeClass('active');
+    }
+  });
+}
 
 /***/ }),
 
