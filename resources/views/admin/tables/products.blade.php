@@ -22,14 +22,15 @@
                                 </ul>
                             </div>
                         </div>
-                        <p class="card-text mb-1"><small class="text-muted">{{$product->added_at}} by Username</small></p>
+
+                        <p class="card-text mb-1"><small class="text-muted">{{$product->added_at}} by {{$product->username}}</small></p>
                         <p class="card-text">{{$product->description}}</p>
 
                         <div class="row">
                             <div class="col">
 
                                 <div class="mb-2 ml-1">
-                                    <a class="" href="#">Section -> Subsection</a>
+                                    <a class="" href="#">{{$product->section}} / {{$product->subSection}}</a>
                                 </div>
 
                                 <table class="table table-borderless mb-1">
@@ -62,19 +63,19 @@
                             <div class="col">
 
                                 <div class="mb-2 ml-1">
-                                    <a class="" href="#">Manufacturer</a>
+                                    <a class="" href="#">{{$product->manufacturer}}</a>
                                 </div>
 
                                 <table class="table table-borderless mb-1">
                                     <thead>
                                     <tr>
-                                        <th class="p-1" colspan="3">Cost: $666</th>
+                                        <th class="p-1" colspan="3">Cost: ${{$product->cost}}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
                                         <td class="p-1">$</td>
-                                        <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="666"></td>
+                                        <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="{{$product->cost}}"></td>
                                         <td class="p-1"><button class="btn btn-sm btn-primary">Apply</button></td>
                                     </tr>
                                     </tbody>
