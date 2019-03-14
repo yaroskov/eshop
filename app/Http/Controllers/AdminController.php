@@ -12,7 +12,7 @@ use App\Product;
 
 class AdminController extends Controller
 {
-    protected $tablesPath = 'pages.admin.tables.';
+    protected $tablesPath = 'admin.tables.';
 
     public function index()
     {
@@ -24,7 +24,7 @@ class AdminController extends Controller
             'products' => Product::orderBy('id', 'desc')->get(),
         );
 
-        return view('pages.admin.index')->with($data);
+        return view('admin.index')->with($data);
     }
 
     public function addSection(Request $request)

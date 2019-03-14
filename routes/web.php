@@ -11,13 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'PagesController@index');
 Route::get('/cart', 'PagesController@cart');
@@ -25,16 +19,23 @@ Route::get('/profile', 'PagesController@profile');
 Route::get('/product', 'PagesController@product');
 Route::get('/search', 'PagesController@search');
 
-Route::get('/add-manufacturer', 'AdminController@addManufacturer');
-Route::get('/delete-manufacturer', 'AdminController@deleteManufacturer');
+Route::get('/admin', function () {
+    return redirect('admin/products');
+});
+Route::get('/admin/products', 'Admin\ProductsController@index');
 
-Route::get('/add-color', 'AdminController@addColor');
-Route::get('/delete-color', 'AdminController@deleteColor');
+Route::get('/admin/users', 'Admin\UsersController@index');
+Route::get('/register-user', 'Admin\UsersController@registerUser');
+Route::get('/delete-user', 'Admin\UsersController@deleteUser');
 
-Route::get('/register-user', 'AdminController@registerUser');
-Route::get('/delete-user', 'AdminController@deleteUser');
+Route::get('/admin/colors', 'Admin\ColorsController@index');
+Route::get('/add-color', 'Admin\ColorsController@addColor');
+Route::get('/delete-color', 'Admin\ColorsController@deleteColor');
 
-Route::get('/add-section', 'AdminController@addSection');
-Route::get('/delete-section', 'AdminController@deleteSection');
+Route::get('/admin/manufacturers', 'Admin\ManufacturersController@index');
+Route::get('/add-manufacturer', 'Admin\ManufacturersController@addManufacturer');
+Route::get('/delete-manufacturer', 'Admin\ManufacturersController@deleteManufacturer');
 
-Route::get('/admin', 'AdminController@index');
+Route::get('/admin/sections', 'Admin\SectionsController@index');
+Route::get('/add-section', 'Admin\SectionsController@addSection');
+Route::get('/delete-section', 'Admin\SectionsController@deleteSection');
