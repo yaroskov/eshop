@@ -49,7 +49,7 @@
                                     @endforeach
                                     <tr>
                                         <td class="p-1"><div class="preset-box"></div></td>
-                                        <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="1"></td>
+                                        <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="0"></td>
                                         <td class="p-1"><button class="btn btn-sm btn-success">+</button></td>
                                     </tr>
                                     </tbody>

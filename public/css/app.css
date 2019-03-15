@@ -10664,8 +10664,8 @@ a.text-dark:focus {
 
 .list-menu li {
   display: inline-block;
-  margin: 0 2px;
-  padding: 0 8px;
+  margin: 3px 6px 3px 0;
+  padding: 0;
   list-style-type: none;
   background: white;
   vertical-align: middle;

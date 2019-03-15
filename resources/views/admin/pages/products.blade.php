@@ -71,7 +71,7 @@
                             <table class="table table-borderless mb-1">
                                 <thead>
                                 <tr>
-                                    <th class="p-1" colspan="3">Count: 777</th>
+                                    <th class="p-1" colspan="3">Count: 0</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -84,7 +84,7 @@
                                 {{--@endforeach--}}
                                 <tr>
                                     <td class="p-1"><div class="preset-box"></div></td>
-                                    <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="1"></td>
+                                    <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="0"></td>
                                     <td class="p-1"><button class="btn btn-sm btn-success">+</button></td>
                                 </tr>
                                 </tbody>
@@ -101,14 +101,14 @@
                             <table class="table table-borderless mb-1">
                                 <thead>
                                 <tr>
-                                    <th class="p-1" colspan="3">Cost: $666</th>
+                                    <th class="p-1" colspan="2">Cost:</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td class="p-1">$</td>
-                                    <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="666"></td>
-                                    <td class="p-1"><button class="btn btn-sm btn-primary">Apply</button></td>
+                                    <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="0"></td>
+                                    {{--<td class="p-1"><button class="btn btn-sm btn-primary">Apply</button></td>--}}
                                 </tr>
                                 </tbody>
                             </table>

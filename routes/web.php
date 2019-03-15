@@ -13,7 +13,8 @@
 
 Auth::routes();
 
-Route::get('/', 'PagesController@index');
+Route::get('/', 'Market\ProductsController@index');
+
 Route::get('/cart', 'PagesController@cart');
 Route::get('/profile', 'PagesController@profile');
 Route::get('/product', 'PagesController@product');
