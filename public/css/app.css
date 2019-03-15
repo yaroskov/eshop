@@ -10659,6 +10659,7 @@ a.text-dark:focus {
   width: 28px;
   height: 28px;
   border-radius: 6px;
+  border: 1px solid #ced4da;
 }
 
 .list-menu li {

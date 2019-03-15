@@ -36,23 +36,20 @@
                                 <table class="table table-borderless mb-1">
                                     <thead>
                                     <tr>
-                                        <th class="p-1" colspan="3">Count: 777</th>
+                                        <th class="p-1" colspan="3">Count: {{$product->totalCount}}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($product->counts as $count)
+                                        <tr>
+                                            <td class="p-1"><div class="preset-box" style="background: {{'#' . $count->color->code}};"></div></td>
+                                            <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="{{$count->count}}"></td>
+                                            <td class="p-1"><button class="btn btn-sm btn-primary">Apply</button></td>
+                                        </tr>
+                                    @endforeach
                                     <tr>
-                                        <td class="p-1"><div class="preset-box bg-success"></div></td>
-                                        <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="13"></td>
-                                        <td class="p-1"><button class="btn btn-sm btn-primary">Apply</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-1"><div class="preset-box bg-success"></div></td>
-                                        <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="666"></td>
-                                        <td class="p-1"><button class="btn btn-sm btn-primary">Apply</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-1"><div class="preset-box bg-success"></div></td>
-                                        <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="666"></td>
+                                        <td class="p-1"><div class="preset-box"></div></td>
+                                        <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="1"></td>
                                         <td class="p-1"><button class="btn btn-sm btn-success">+</button></td>
                                     </tr>
                                     </tbody>
