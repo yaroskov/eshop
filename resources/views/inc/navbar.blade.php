@@ -8,10 +8,12 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
+                <ul id="navbarMenu" class="navbar-nav mr-auto">
+                    <li>
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                            eshop
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/">Market</a>
                     </li>

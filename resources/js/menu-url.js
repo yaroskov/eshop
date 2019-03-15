@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     menuUrl('#menu-url');
+    menuUrl('#navbarMenu');
 });
 
 function menuUrl (selector) {
@@ -9,9 +10,15 @@ function menuUrl (selector) {
 
     $(selector).find('a').each(function () {
 
-        if (url == $(this).attr('href')) {
+        var href = $(this).attr('href');
+
+        if ((href == '/' && url == href) ||
+            (href != '/' && url.indexOf(href) >= 0)) {
+
             $(this).addClass('active');
+
         } else {
+
             $(this).removeClass('active');
         }
     });
