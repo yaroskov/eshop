@@ -26,7 +26,7 @@ class ManufacturersController extends Controller
             $man->save();
 
             $manufacturers = Manufacturer::orderBy('id', 'desc')->get();
-            $view = view('admin.pages.data-table')->with('manufacturers', $manufacturers)->render();
+            $view = view('admin.tables.data-table')->with('manufacturers', $manufacturers)->render();
 
             return response()->json(['data' => $data, 'view' => $view]);
         }
@@ -44,7 +44,7 @@ class ManufacturersController extends Controller
             $man->delete();
 
             $manufacturers = Manufacturer::orderBy('id', 'desc')->get();
-            $view = view('admin.pages.data-table')->with('manufacturers', $manufacturers)->render();
+            $view = view('admin.tables.data-table')->with('manufacturers', $manufacturers)->render();
 
             return response()->json(['view' => $view]);
         }

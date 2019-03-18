@@ -14,7 +14,7 @@
                     <input type="text" class="form-control" placeholder="Manufacturer">
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-primary add-row" data-url="add-manufacturer">Add</button>
+                    <button type="button" class="btn btn-primary add-row" data-url="/admin/add-manufacturer">Add</button>
                 </div>
             </div>
         </form>

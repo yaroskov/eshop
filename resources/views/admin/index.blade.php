@@ -21,7 +21,7 @@
                         </nav>
                     </div>
                     <div class="col-9">
-                        <div class="tab-pane">
+                        <div class="content-wrapper">
                             @yield('admin-content')
                         </div>
                     </div>

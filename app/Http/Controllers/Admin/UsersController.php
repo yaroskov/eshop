@@ -33,7 +33,7 @@ class UsersController extends Controller
         $user->save();
 
         $users = User::orderBy('id', 'desc')->get();
-        $view = view( 'admin.pages.users-table')->with('users', $users)->render();
+        $view = view( 'admin.tables.users-table')->with('users', $users)->render();
 
         return response()->json(['view' => $view]);
     }
@@ -48,7 +48,7 @@ class UsersController extends Controller
             $obj->delete();
 
             $users = User::orderBy('id', 'desc')->get();
-            $view = view('admin.pages.users-table')->with('users', $users)->render();
+            $view = view('admin.tables.users-table')->with('users', $users)->render();
 
             return response()->json(['view' => $view]);
         }

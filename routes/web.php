@@ -26,17 +26,17 @@ Route::get('/admin', function () {
 Route::get('/admin/products', 'Admin\ProductsController@index');
 
 Route::get('/admin/users', 'Admin\UsersController@index');
-Route::get('/register-user', 'Admin\UsersController@registerUser');
-Route::get('/delete-user', 'Admin\UsersController@deleteUser');
+Route::get('/admin/register-user', 'Admin\UsersController@registerUser');
+Route::get('/admin/delete-user', 'Admin\UsersController@deleteUser');
 
 Route::get('/admin/colors', 'Admin\ColorsController@index');
-Route::get('/add-color', 'Admin\ColorsController@addColor');
-Route::get('/delete-color', 'Admin\ColorsController@deleteColor');
+Route::get('/admin/add-color', 'Admin\ColorsController@addColor');
+Route::get('/admin/delete-color', 'Admin\ColorsController@deleteColor');
 
 Route::get('/admin/manufacturers', 'Admin\ManufacturersController@index');
-Route::get('/add-manufacturer', 'Admin\ManufacturersController@addManufacturer');
-Route::get('/delete-manufacturer', 'Admin\ManufacturersController@deleteManufacturer');
+Route::get('/admin/add-manufacturer', 'Admin\ManufacturersController@addManufacturer');
+Route::get('/admin/delete-manufacturer', 'Admin\ManufacturersController@deleteManufacturer');
 
 Route::get('/admin/sections', 'Admin\SectionsController@index');
-Route::get('/add-section', 'Admin\SectionsController@addSection');
-Route::get('/delete-section', 'Admin\SectionsController@deleteSection');
+Route::get('/admin/add-section', 'Admin\SectionsController@addSection');
+Route::get('/admin/delete-section', 'Admin\SectionsController@deleteSection');

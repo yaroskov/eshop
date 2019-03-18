@@ -25,7 +25,7 @@ class SectionsController extends Controller
             $section->save();
 
             $sections = Section::orderBy('id', 'desc')->get();
-            $view = view('admin.pages.sections-table')->with('sections', $sections)->render();
+            $view = view('admin.tables.sections-table')->with('sections', $sections)->render();
 
             return response()->json(['view' => $view]);
         }
@@ -43,7 +43,7 @@ class SectionsController extends Controller
             $obj->delete();
 
             $sections = Section::orderBy('id', 'desc')->get();
-            $view = view('admin.pages.sections-table')->with('sections', $sections)->render();
+            $view = view('admin.tables.sections-table')->with('sections', $sections)->render();
 
             return response()->json(['view' => $view]);
         }

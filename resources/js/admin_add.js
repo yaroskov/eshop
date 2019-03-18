@@ -54,13 +54,13 @@ function addSubRow() {
    });
 }
 
-function addRowProcess(event){
+function addRowProcess(event) {
 
    var url = $(event).data('url');
 
    var data = $(event).parents('.form-group').find('input').val();
 
-   var resultsBlock = $(event).parents('.tab-pane').find('.resultsBlock');
+   var resultsBlock = $(event).parents('.content-wrapper').find('.resultsBlock');
 
    $.ajax({
       type: 'GET',

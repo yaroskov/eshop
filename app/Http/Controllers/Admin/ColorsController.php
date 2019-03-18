@@ -26,7 +26,7 @@ class ColorsController extends Controller
             $clr->save();
 
             $colors = Color::orderBy('id', 'desc')->get();
-            $view = view('admin.pages.colors-table')->with('colors', $colors)->render();
+            $view = view('admin.tables.colors-table')->with('colors', $colors)->render();
 
             return response()->json(['view' => $view]);
         }
@@ -44,7 +44,7 @@ class ColorsController extends Controller
             $man->delete();
 
             $manufacturers = Color::orderBy('id', 'desc')->get();
-            $view = view('admin.pages.colors-table')->with('colors', $manufacturers)->render();
+            $view = view('admin.tables.colors-table')->with('colors', $manufacturers)->render();
 
             return response()->json(['view' => $view]);
         }
