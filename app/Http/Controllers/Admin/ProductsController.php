@@ -15,6 +15,15 @@ class ProductsController extends Controller
 {
     public function index()
     {
+        $data = array(
+            'products' => $this->getProducts(),
+        );
+
+        return view('admin.pages.products')->with($data);
+    }
+
+    function getProducts()
+    {
         $products = Product::orderBy('id', 'desc')->get();
 
         $user_ids = array();
@@ -93,10 +102,43 @@ class ProductsController extends Controller
             }
         }
 
-        $data = array(
-            'products' => $products,
-        );
+        return $products;
+    }
 
-        return view('admin.pages.products')->with($data);
+    function add(Request $request)
+    {
+        if ($request->has('title')) {
+
+            $obj = new Product();
+            $obj->name = $request->get('title');
+            $obj->description = $request->get('description');
+            $obj->cost = $request->get('cost');
+            $obj->save();
+
+            $products = $this->getProducts();
+            $view = view('admin.tables.products')->with('products', $products)->render();
+
+            return response()->json(['view' => $view]);
+        }
+
+        return 'empty';
+    }
+
+    public function delete(Request $request)
+    {
+        if ($request->has('id')) {
+
+            $id = $request->get('id');
+
+            $obj = Product::find($id);
+            $obj->delete();
+
+            $products = $this->getProducts();
+            $view = view('admin.tables.products')->with('products', $products)->render();
+
+            return response()->json(['view' => $view]);
+        }
+
+        return 'empty';
     }
 }

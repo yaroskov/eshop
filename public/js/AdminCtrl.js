@@ -967,6 +967,16 @@ function () {
       });
     }
   }, {
+    key: "addProduct",
+    value: function addProduct() {
+      var url = this.target.dataset.url;
+      var title = document.getElementById('title').value;
+      var description = document.getElementById('description').value;
+      var cost = document.getElementById('cost').value;
+      this.url = url + '?title=' + title + '&description=' + description + '&cost=' + cost;
+      this.query();
+    }
+  }, {
     key: "addUser",
     value: function addUser() {
       var url = this.target.dataset.url;
@@ -1010,6 +1020,8 @@ function () {
           _this.deleteRow();
         } else if (_this.target.classList.contains('add-user')) {
           _this.addUser();
+        } else if (_this.target.classList.contains('add-product')) {
+          _this.addProduct();
         }
       });
     }

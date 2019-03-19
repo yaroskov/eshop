@@ -24,6 +24,8 @@ Route::get('/admin', function () {
     return redirect('admin/products');
 });
 Route::get('/admin/products', 'Admin\ProductsController@index');
+Route::get('/admin/products/add', 'Admin\ProductsController@add');
+Route::get('/admin/products/delete', 'Admin\ProductsController@delete');
 
 Route::get('/admin/users', 'Admin\UsersController@index');
 Route::get('/admin/register-user', 'Admin\UsersController@registerUser');

@@ -17,7 +17,8 @@
                                         <button class="btn btn-sm btn-primary">Hide</button>
                                     </li>
                                     <li class="list-group-item border-0 p-1">
-                                        <button class="btn btn-sm btn-primary">Delete</button>
+                                        <button class="btn btn-sm btn-primary delete-row"
+                                                data-id="{{$product->id}}" data-url="/admin/products/delete">Delete</button>
                                     </li>
                                 </ul>
                             </div>

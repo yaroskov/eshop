@@ -44,21 +44,19 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <input type="text" class="form-control mb-3" id="exampleFormControlInput1" placeholder="Product's Title">
-                            {{--<h5 class="card-title mb-0">Product's Title</h5>--}}
+                            <input type="text" class="form-control mb-3" id="title" placeholder="Product's Title">
                         </div>
                         <div class="col">
                             <ul class="list-group list-group-horizontal justify-content-md-end">
                                 <li class="list-group-item border-0 p-1">
-                                    <button class="btn btn-sm btn-success">Add To Market</button>
+                                    <button class="btn btn-sm btn-success add-product" data-url="/admin/products/add">Add To Market</button>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        {{--<label for="exampleFormControlTextarea1">Description of a product</label>--}}
-                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description of a product" rows="3"></textarea>
+                        <textarea class="form-control" id="description" placeholder="Description of a product" rows="3"></textarea>
                     </div>
 
                     <div class="row">
@@ -75,13 +73,6 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {{--@foreach($product->counts as $count)--}}
-                                {{--<tr>--}}
-                                {{--<td class="p-1"><div class="preset-box" style="background: {{'#' . $count->color->code}};"></div></td>--}}
-                                {{--<td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="{{$count->count}}"></td>--}}
-                                {{--<td class="p-1"><button class="btn btn-sm btn-primary">Apply</button></td>--}}
-                                {{--</tr>--}}
-                                {{--@endforeach--}}
                                 <tr>
                                     <td class="p-1"><div class="preset-box"></div></td>
                                     <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="0"></td>
@@ -107,8 +98,7 @@
                                 <tbody>
                                 <tr>
                                     <td class="p-1">$</td>
-                                    <td class="p-1"><input class="form-control form-control-sm" type="text" placeholder="0"></td>
-                                    {{--<td class="p-1"><button class="btn btn-sm btn-primary">Apply</button></td>--}}
+                                    <td class="p-1"><input id="cost" class="form-control form-control-sm" type="text" placeholder="0"></td>
                                 </tr>
                                 </tbody>
                             </table>

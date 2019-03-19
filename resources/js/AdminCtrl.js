@@ -30,6 +30,21 @@ class AdminCtrl {
         });
     }
 
+    addProduct() {
+
+        let url = this.target.dataset.url;
+
+        let title = document.getElementById('title').value;
+        let description = document.getElementById('description').value;
+        let cost = document.getElementById('cost').value;
+
+        this.url = url + '?title=' + title
+            + '&description=' + description
+            + '&cost=' + cost;
+
+        this.query();
+    }
+
     addUser() {
 
         let url = this.target.dataset.url;
@@ -83,9 +98,15 @@ class AdminCtrl {
             } else if (_this.target.classList.contains('delete-row')) {
 
                 _this.deleteRow();
+
             } else if (_this.target.classList.contains('add-user')) {
 
                 _this.addUser();
+
+            } else if (_this.target.classList.contains('add-product')) {
+
+                _this.addProduct();
+
             }
         });
     }
