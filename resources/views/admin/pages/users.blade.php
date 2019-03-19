@@ -46,7 +46,7 @@
 
             <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-4">
-                    <button id="register-user" type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary add-user" data-url="/admin/register-user">
                         {{ __('Register New') }}
                     </button>
                 </div>

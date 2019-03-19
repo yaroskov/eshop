@@ -30,18 +30,37 @@ class AdminCtrl {
         });
     }
 
+    addUser() {
+
+        let url = this.target.dataset.url;
+        let form = this.target.closest('form');
+        let name = form.querySelector('#name').value;
+        let password = form.querySelector('#password').value;
+        let email = form.querySelector('#email').value;
+        let userType = form.querySelector('#userType').value;
+
+        this.url = url + '?name=' + name
+            + '&email=' + email
+            + '&password=' + password
+            + '&userType=' + userType;
+
+        this.query();
+    }
+
     addRow(sectionId) {
 
+        let url = this.target.dataset.url;
         let data = this.target.closest('.form-group').querySelector('input').value;
-        this.url = this.url + '?data=' + data + '&sectionId=' + sectionId;
+        this.url = url + '?data=' + data + '&sectionId=' + sectionId;
 
         this.query();
     }
 
     deleteRow() {
 
+        let url = this.target.dataset.url;
         let id = this.target.dataset.id;
-        this.url = this.url + '?id=' + id;
+        this.url = url + '?id=' + id;
 
         this.query();
     }
@@ -52,7 +71,6 @@ class AdminCtrl {
         window.addEventListener('click', function (event) {
 
             _this.target = event.target;
-            _this.url = _this.target.dataset.url;
 
             if (_this.target.classList.contains('add-row')) {
 
@@ -65,6 +83,9 @@ class AdminCtrl {
             } else if (_this.target.classList.contains('delete-row')) {
 
                 _this.deleteRow();
+            } else if (_this.target.classList.contains('add-user')) {
+
+                _this.addUser();
             }
         });
     }

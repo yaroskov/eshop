@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -967,17 +967,31 @@ function () {
       });
     }
   }, {
+    key: "addUser",
+    value: function addUser() {
+      var url = this.target.dataset.url;
+      var form = this.target.closest('form');
+      var name = form.querySelector('#name').value;
+      var password = form.querySelector('#password').value;
+      var email = form.querySelector('#email').value;
+      var userType = form.querySelector('#userType').value;
+      this.url = url + '?name=' + name + '&email=' + email + '&password=' + password + '&userType=' + userType;
+      this.query();
+    }
+  }, {
     key: "addRow",
     value: function addRow(sectionId) {
+      var url = this.target.dataset.url;
       var data = this.target.closest('.form-group').querySelector('input').value;
-      this.url = this.url + '?data=' + data + '&sectionId=' + sectionId;
+      this.url = url + '?data=' + data + '&sectionId=' + sectionId;
       this.query();
     }
   }, {
     key: "deleteRow",
     value: function deleteRow() {
+      var url = this.target.dataset.url;
       var id = this.target.dataset.id;
-      this.url = this.url + '?id=' + id;
+      this.url = url + '?id=' + id;
       this.query();
     }
   }, {
@@ -987,7 +1001,6 @@ function () {
 
       window.addEventListener('click', function (event) {
         _this.target = event.target;
-        _this.url = _this.target.dataset.url;
 
         if (_this.target.classList.contains('add-row')) {
           _this.addRow(0);
@@ -995,6 +1008,8 @@ function () {
           _this.addRow(_this.target.dataset.sectionId);
         } else if (_this.target.classList.contains('delete-row')) {
           _this.deleteRow();
+        } else if (_this.target.classList.contains('add-user')) {
+          _this.addUser();
         }
       });
     }
@@ -1008,7 +1023,7 @@ admin.events();
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!*****************************************!*\
   !*** multi ./resources/js/AdminCtrl.js ***!
   \*****************************************/
