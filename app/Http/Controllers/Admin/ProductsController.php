@@ -15,8 +15,24 @@ class ProductsController extends Controller
 {
     public function index()
     {
+        $sections = Section::orderBy('id', 'desc')->get();
+
+        $sectionsSorted = array();
+        foreach($sections as $section){
+            if($section->section_id == 0){
+                foreach ($sections as $s){
+                    if($section->id == $s->section_id){
+
+                        $sectionsSorted[$section->value][] = $s->value;
+                    }
+                }
+            }
+        }
+
         $data = array(
             'products' => $this->getProducts(),
+            'manufacturers' => Manufacturer::orderBy('id', 'desc')->get(),
+            'sections' => $sectionsSorted,
         );
 
         return view('admin.pages.products')->with($data);

@@ -1,6 +1,7 @@
 @extends('admin.index')
 
 @section('admin-content')
+
     <h3 class="mb-3">Products</h3>
 
     <ul class="nav nav-tabs mb-3">
@@ -63,7 +64,9 @@
                         <div class="col">
 
                             <div class="mb-2 ml-1">
-                                <a class="" href="#">Section / Subsection</a>
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#sectionsModal">
+                                    Section / Subsection
+                                </button>
                             </div>
 
                             <table class="table table-borderless mb-1">
@@ -86,7 +89,9 @@
                         <div class="col">
 
                             <div class="mb-2 ml-1">
-                                <a class="" href="#">Manufacturer</a>
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#manufacturersModal">
+                                    Manufacturer
+                                </button>
                             </div>
 
                             <table class="table table-borderless mb-1">
@@ -112,5 +117,64 @@
 
     <div class="resultsBlock">
         @include('admin.tables.products')
+    </div>
+
+    <div class="modal fade" id="manufacturersModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Manufacturers</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @if(count($manufacturers) > 0)
+                        <ul class="list-group">
+                            @foreach($manufacturers as $manufacturer)
+                                <li class="list-group-item border-0 pt-2 pb-2">{{$manufacturer->name}}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="sectionsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Sections</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @if(count($sections) > 0)
+                        <ul class="list-group">
+                            @foreach($sections as $i => $section)
+                                <li class="list-group-item border-0 pt-2 pb-2">
+                                    <h5 class="text-muted">{{$i}}</h5>
+                                    <ul class="list-group">
+                                        @foreach($section as $s)
+                                            <li class="list-group-item border-0 pt-2 pb-2">{{$s}}</li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">OK</button>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
