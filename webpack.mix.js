@@ -15,4 +15,5 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/bootstrap.js', 'public/js')
     .js('resources/js/admin_add.js', 'public/js')
     .js('resources/js/menu-url.js', 'public/js')
+    .js('resources/js/AdminCtrl.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
