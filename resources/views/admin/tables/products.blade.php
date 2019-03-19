@@ -14,11 +14,11 @@
                             <div class="col">
                                 <ul class="list-group list-group-horizontal justify-content-md-end">
                                     <li class="list-group-item border-0 p-1">
-                                        <button class="btn btn-sm btn-primary">Hide</button>
+                                        <button class="btn btn-sm btn-outline-primary">Hide</button>
                                     </li>
                                     <li class="list-group-item border-0 p-1">
                                         <button class="btn btn-sm btn-primary delete-row"
-                                                data-id="{{$product->id}}" data-url="/admin/products/delete">Delete</button>
+                                                data-id="{{$product->id}}" data-url="/admin/products/delete">&times;</button>
                                     </li>
                                 </ul>
                             </div>

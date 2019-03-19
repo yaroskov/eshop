@@ -64,7 +64,7 @@
                         <div class="col">
 
                             <div class="mb-2 ml-1">
-                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#sectionsModal">
+                                <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#sectionsModal">
                                     Section / Subsection
                                 </button>
                             </div>
@@ -89,7 +89,7 @@
                         <div class="col">
 
                             <div class="mb-2 ml-1">
-                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#manufacturersModal">
+                                <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#manufacturersModal">
                                     Manufacturer
                                 </button>
                             </div>
@@ -120,7 +120,7 @@
     </div>
 
     <div class="modal fade" id="manufacturersModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="width: 300px;">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="">Manufacturers</h5>
@@ -146,7 +146,7 @@
     </div>
 
     <div class="modal fade" id="sectionsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="width: 300px;">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalCenterTitle">Sections</h5>
