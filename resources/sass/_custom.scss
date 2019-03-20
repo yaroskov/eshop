@@ -15,3 +15,20 @@
     vertical-align: middle;
   }
 }
+
+$menu-border-radius: 5px;
+
+.menu-box {
+
+  &-el {
+    border-radius: $menu-border-radius;
+
+    &:first-child {
+      border-radius: $menu-border-radius;
+    }
+
+    &:last-child {
+      border-radius: $menu-border-radius;
+    }
+  }
+}

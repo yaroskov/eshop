@@ -10671,6 +10671,18 @@ a.text-dark:focus {
   vertical-align: middle;
 }
 
+.menu-box-el {
+  border-radius: 5px;
+}
+
+.menu-box-el:first-child {
+  border-radius: 5px;
+}
+
+.menu-box-el:last-child {
+  border-radius: 5px;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

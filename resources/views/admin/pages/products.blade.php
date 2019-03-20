@@ -64,7 +64,8 @@
                         <div class="col">
 
                             <div class="mb-2 ml-1">
-                                <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#sectionsModal">
+                                <button id="section" type="button" class="btn btn-sm btn-outline-primary menu-box-activator"
+                                        data-id="0" data-el-id="0" data-param="section" data-toggle="modal" data-target="#sectionsModal">
                                     Section / Subsection
                                 </button>
                             </div>
@@ -89,7 +90,8 @@
                         <div class="col">
 
                             <div class="mb-2 ml-1">
-                                <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#manufacturersModal">
+                                <button id="manufacturer" type="button" class="btn btn-sm btn-outline-primary menu-box-activator"
+                                        data-id="0" data-el-id="0" data-param="manufacturer" data-toggle="modal" data-target="#manufacturersModal">
                                     Manufacturer
                                 </button>
                             </div>
@@ -119,7 +121,8 @@
         @include('admin.tables.products')
     </div>
 
-    <div class="modal fade" id="manufacturersModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal fade" id="manufacturersModal" data-id="0" data-param="manufacturer" tabindex="-1" role="dialog"
+         aria-labelledby="" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document" style="width: 300px;">
             <div class="modal-content">
                 <div class="modal-header">
@@ -130,22 +133,24 @@
                 </div>
                 <div class="modal-body">
                     @if(count($manufacturers) > 0)
-                        <ul class="list-group">
+                        <ul class="menu-box list-group">
                             @foreach($manufacturers as $manufacturer)
-                                <li class="list-group-item border-0 pt-2 pb-2">{{$manufacturer->name}}</li>
+                                <li class="menu-box-el list-group-item border-0 pt-2 pb-2"
+                                    data-el-id="{{$manufacturer->id}}">{{$manufacturer->name}}</li>
                             @endforeach
                         </ul>
                     @endif
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">OK</button>
+                    <button type="button" class="btn btn-primary menu-box-ok" data-dismiss="modal">OK</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="sectionsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="sectionsModal" data-id="0" data-param="section" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document" style="width: 300px;">
             <div class="modal-content">
                 <div class="modal-header">
@@ -156,13 +161,14 @@
                 </div>
                 <div class="modal-body">
                     @if(count($sections) > 0)
-                        <ul class="list-group">
-                            @foreach($sections as $i => $section)
-                                <li class="list-group-item border-0 pt-2 pb-2">
-                                    <h5 class="text-muted">{{$i}}</h5>
+                        <ul class="menu-box menu-box-titled list-group">
+                            @foreach($sections as $section)
+                                <li class="menu-box-block list-group-item border-0 pt-2 pb-2">
+                                    <h5 class="menu-box-title text-muted">{{$section['title']}}</h5>
                                     <ul class="list-group">
-                                        @foreach($section as $s)
-                                            <li class="list-group-item border-0 pt-2 pb-2">{{$s}}</li>
+                                        @foreach($section['subSections'] as $subSection)
+                                            <li class="menu-box-el list-group-item border-0 pt-2 pb-2"
+                                                data-el-id="{{$subSection['id']}}">{{$subSection['value']}}</li>
                                         @endforeach
                                     </ul>
                                 </li>
@@ -172,7 +178,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">OK</button>
+                    <button type="button" class="btn btn-primary menu-box-ok" data-dismiss="modal">OK</button>
                 </div>
             </div>
         </div>

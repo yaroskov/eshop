@@ -6,6 +6,11 @@ class AdminCtrl {
 
         this.target = undefined;
         this.url = undefined;
+
+        this.menuBoxEl = undefined;
+        this.menuBoxId = '';
+        this.menuBoxParam = '';
+        this.elId = 0;
     }
 
     query() {
@@ -37,10 +42,11 @@ class AdminCtrl {
         let title = document.getElementById('title').value;
         let description = document.getElementById('description').value;
         let cost = document.getElementById('cost').value;
+        let section = document.getElementById('section').dataset.elId;
+        let manufacturer = document.getElementById('manufacturer').dataset.elId;
 
-        this.url = url + '?title=' + title
-            + '&description=' + description
-            + '&cost=' + cost;
+        this.url = url + '?title=' + title + '&description=' + description + '&cost=' + cost
+            + '&section=' + section + '&manufacturer=' + manufacturer;
 
         this.query();
     }
@@ -54,10 +60,7 @@ class AdminCtrl {
         let email = form.querySelector('#email').value;
         let userType = form.querySelector('#userType').value;
 
-        this.url = url + '?name=' + name
-            + '&email=' + email
-            + '&password=' + password
-            + '&userType=' + userType;
+        this.url = url + '?name=' + name + '&email=' + email + '&password=' + password + '&userType=' + userType;
 
         this.query();
     }
@@ -78,6 +81,70 @@ class AdminCtrl {
         this.url = url + '?id=' + id;
 
         this.query();
+    }
+
+    clickMenu() {
+        let menuBox = this.target.closest('.menu-box');
+
+        let titled = false;
+
+        if (menuBox.classList.contains('menu-box-titled')) {
+            titled = true;
+        }
+
+        let menuEls = menuBox.querySelectorAll('.menu-box-el');
+
+        Object.keys(menuEls).forEach(function (el) {
+
+            menuEls[el].classList.remove('active');
+
+            if (titled) {
+                AdminCtrl.switchTitle(menuEls[el], false);
+            }
+        });
+
+        this.target.classList.add('active');
+
+        let section = undefined;
+
+        if (titled) {
+            section = AdminCtrl.switchTitle(this.target);
+        }
+
+        if (titled) {
+            this.menuBoxEl = section + ' / ' + this.target.innerHTML;
+        } else {
+            this.menuBoxEl = this.target.innerHTML;
+        }
+
+        this.elId = this.target.dataset.elId;
+
+        let modal = this.target.closest('.modal');
+        this.menuBoxId = modal.dataset.id;
+        this.menuBoxParam = modal.dataset.param;
+    }
+
+    static switchTitle(element, add = true) {
+
+        let title = element.closest('.menu-box-block').querySelector('.menu-box-title');
+
+        if (add) {
+            title.classList.remove('text-muted');
+            title.classList.add('text-primary');
+        } else {
+            title.classList.remove('text-primary');
+            title.classList.add('text-muted');
+        }
+
+        return title.innerHTML;
+    }
+
+    menuSelect() {
+
+        let button = document.querySelector('.menu-box-activator[data-id="' + this.menuBoxId + '"]' +
+            '[data-param="' + this.menuBoxParam + '"]');
+        button.innerHTML = this.menuBoxEl;
+        button.dataset.elId = this.elId;
     }
 
     events() {
@@ -106,6 +173,14 @@ class AdminCtrl {
             } else if (_this.target.classList.contains('add-product')) {
 
                 _this.addProduct();
+
+            } else if (_this.target.classList.contains('menu-box-el')) {
+
+                _this.clickMenu();
+
+            } else if (_this.target.classList.contains('menu-box-ok')) {
+
+                _this.menuSelect();
 
             }
         });

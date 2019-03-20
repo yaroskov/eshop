@@ -18,14 +18,23 @@ class ProductsController extends Controller
         $sections = Section::orderBy('id', 'desc')->get();
 
         $sectionsSorted = array();
-        foreach($sections as $section){
-            if($section->section_id == 0){
-                foreach ($sections as $s){
-                    if($section->id == $s->section_id){
+        $n = 0;
+        foreach($sections as $section) {
+            if ($section->section_id == 0) {
 
-                        $sectionsSorted[$section->value][] = $s->value;
+                $i = 0;
+                $sectionsSorted[$n]['title'] = $section->value;
+                $sectionsSorted[$n]['subSections'] = array();
+
+                foreach ($sections as $s) {
+                    if ($section->id == $s->section_id) {
+
+                        $sectionsSorted[$n]['subSections'][$i]['value'] = $s->value;
+                        $sectionsSorted[$n]['subSections'][$i]['id'] = $s->id;
+                        $i++;
                     }
                 }
+                $n++;
             }
         }
 
@@ -129,6 +138,8 @@ class ProductsController extends Controller
             $obj->name = $request->get('title');
             $obj->description = $request->get('description');
             $obj->cost = $request->get('cost');
+            $obj->manufacturer_id = $request->get('manufacturer');
+            $obj->section_id = $request->get('section');
             $obj->save();
 
             $products = $this->getProducts();

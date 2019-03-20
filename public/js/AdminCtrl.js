@@ -911,6 +911,10 @@ function () {
 
     this.target = undefined;
     this.url = undefined;
+    this.menuBoxEl = undefined;
+    this.menuBoxId = '';
+    this.menuBoxParam = '';
+    this.elId = 0;
   }
 
   _createClass(AdminCtrl, [{
@@ -973,7 +977,9 @@ function () {
       var title = document.getElementById('title').value;
       var description = document.getElementById('description').value;
       var cost = document.getElementById('cost').value;
-      this.url = url + '?title=' + title + '&description=' + description + '&cost=' + cost;
+      var section = document.getElementById('section').dataset.elId;
+      var manufacturer = document.getElementById('manufacturer').dataset.elId;
+      this.url = url + '?title=' + title + '&description=' + description + '&cost=' + cost + '&section=' + section + '&manufacturer=' + manufacturer;
       this.query();
     }
   }, {
@@ -1005,6 +1011,49 @@ function () {
       this.query();
     }
   }, {
+    key: "clickMenu",
+    value: function clickMenu() {
+      var menuBox = this.target.closest('.menu-box');
+      var titled = false;
+
+      if (menuBox.classList.contains('menu-box-titled')) {
+        titled = true;
+      }
+
+      var menuEls = menuBox.querySelectorAll('.menu-box-el');
+      Object.keys(menuEls).forEach(function (el) {
+        menuEls[el].classList.remove('active');
+
+        if (titled) {
+          AdminCtrl.switchTitle(menuEls[el], false);
+        }
+      });
+      this.target.classList.add('active');
+      var section = undefined;
+
+      if (titled) {
+        section = AdminCtrl.switchTitle(this.target);
+      }
+
+      if (titled) {
+        this.menuBoxEl = section + ' / ' + this.target.innerHTML;
+      } else {
+        this.menuBoxEl = this.target.innerHTML;
+      }
+
+      this.elId = this.target.dataset.elId;
+      var modal = this.target.closest('.modal');
+      this.menuBoxId = modal.dataset.id;
+      this.menuBoxParam = modal.dataset.param;
+    }
+  }, {
+    key: "menuSelect",
+    value: function menuSelect() {
+      var button = document.querySelector('.menu-box-activator[data-id="' + this.menuBoxId + '"]' + '[data-param="' + this.menuBoxParam + '"]');
+      button.innerHTML = this.menuBoxEl;
+      button.dataset.elId = this.elId;
+    }
+  }, {
     key: "events",
     value: function events() {
       var _this = this;
@@ -1022,8 +1071,28 @@ function () {
           _this.addUser();
         } else if (_this.target.classList.contains('add-product')) {
           _this.addProduct();
+        } else if (_this.target.classList.contains('menu-box-el')) {
+          _this.clickMenu();
+        } else if (_this.target.classList.contains('menu-box-ok')) {
+          _this.menuSelect();
         }
       });
+    }
+  }], [{
+    key: "switchTitle",
+    value: function switchTitle(element) {
+      var add = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      var title = element.closest('.menu-box-block').querySelector('.menu-box-title');
+
+      if (add) {
+        title.classList.remove('text-muted');
+        title.classList.add('text-primary');
+      } else {
+        title.classList.remove('text-primary');
+        title.classList.add('text-muted');
+      }
+
+      return title.innerHTML;
     }
   }]);
 
