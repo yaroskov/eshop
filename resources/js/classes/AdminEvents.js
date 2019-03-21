@@ -3,6 +3,7 @@
 import Products from './Products';
 import Row from './Row';
 import User from './User';
+import ColorsCount from './ColorsCount';
 
 class AdminEvents {
 
@@ -11,6 +12,7 @@ class AdminEvents {
         this.products = new Products();
         this.row = new Row();
         this.user = new User();
+        this.colorsCount = new ColorsCount();
     }
 
     run() {
@@ -54,6 +56,11 @@ class AdminEvents {
 
                 _this.products.target = target;
                 _this.products.menuSelect();
+
+            } else if (target.classList.contains('add-count')) {
+
+                _this.colorsCount.target = target;
+                _this.colorsCount.add();
 
             }
         });

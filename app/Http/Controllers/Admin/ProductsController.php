@@ -168,4 +168,18 @@ class ProductsController extends Controller
 
         return 'empty';
     }
+
+    public function addCount(Request $request) {
+
+        if($request->has('data')){
+
+            $data = $request->get('data');
+
+            $view = view('admin.tables.count-colors')->with('data', $data)->render();
+
+            return response()->json(['view' => $view]);
+        }
+
+        return 'empty';
+    }
 }

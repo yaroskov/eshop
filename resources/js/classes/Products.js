@@ -32,6 +32,7 @@ export default class Products {
     }
 
     clickMenu() {
+
         let menuBox = this.target.closest('.menu-box');
 
         let titled = false;

@@ -890,6 +890,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Products__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Products */ "./resources/js/classes/Products.js");
 /* harmony import */ var _Row__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Row */ "./resources/js/classes/Row.js");
 /* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./User */ "./resources/js/classes/User.js");
+/* harmony import */ var _ColorsCount__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ColorsCount */ "./resources/js/classes/ColorsCount.js");
 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -897,6 +898,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 
 
 
@@ -911,6 +913,7 @@ function () {
     this.products = new _Products__WEBPACK_IMPORTED_MODULE_0__["default"]();
     this.row = new _Row__WEBPACK_IMPORTED_MODULE_1__["default"]();
     this.user = new _User__WEBPACK_IMPORTED_MODULE_2__["default"]();
+    this.colorsCount = new _ColorsCount__WEBPACK_IMPORTED_MODULE_3__["default"]();
   }
 
   _createClass(AdminEvents, [{
@@ -949,6 +952,10 @@ function () {
           _this.products.target = target;
 
           _this.products.menuSelect();
+        } else if (target.classList.contains('add-count')) {
+          _this.colorsCount.target = target;
+
+          _this.colorsCount.add();
         }
       });
     }
@@ -959,6 +966,70 @@ function () {
 
 var adminEvents = new AdminEvents();
 adminEvents.run();
+
+/***/ }),
+
+/***/ "./resources/js/classes/ColorsCount.js":
+/*!*********************************************!*\
+  !*** ./resources/js/classes/ColorsCount.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ColorsCount; });
+/* harmony import */ var _Query__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Query */ "./resources/js/classes/Query.js");
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var ColorsCount =
+/*#__PURE__*/
+function () {
+  function ColorsCount() {
+    _classCallCheck(this, ColorsCount);
+
+    this.target = undefined;
+  }
+
+  _createClass(ColorsCount, [{
+    key: "add",
+    value: function add() {
+      var url = this.target.dataset.url;
+      var countRow = this.target.closest('tbody').getElementsByTagName('tr');
+      var results = {};
+
+      for (var i = 0; i < countRow.length; i++) {
+        var count = countRow[i].getElementsByClassName('count-value')[0].value;
+
+        if (!count) {
+          count = 0;
+        }
+
+        results[i] = {
+          count: count,
+          color: countRow[i].getElementsByClassName('select-color')[0].dataset.colorId
+        };
+      }
+
+      results = {
+        data: results
+      };
+      _Query__WEBPACK_IMPORTED_MODULE_0__["default"].post(this.target, url, results);
+    }
+  }]);
+
+  return ColorsCount;
+}();
+
+
 
 /***/ }),
 
@@ -1113,6 +1184,32 @@ function () {
   _createClass(Query, null, [{
     key: "get",
     value: function get(target, url) {
+      var params = {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      };
+      Query.request(target, url, params);
+    }
+  }, {
+    key: "post",
+    value: function post(target, url, data) {
+      var params = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify(data)
+      };
+      Query.request(target, url, params);
+    }
+  }, {
+    key: "request",
+    value: function request(target, url, params) {
       var resultsBlock = target.closest('.content-wrapper').querySelector('.resultsBlock');
 
       var ajax =
@@ -1127,13 +1224,7 @@ function () {
               switch (_context.prev = _context.next) {
                 case 0:
                   _context.next = 2;
-                  return fetch(url, {
-                    method: 'GET',
-                    headers: {
-                      'Accept': 'application/json',
-                      'Content-Type': 'application/json'
-                    }
-                  });
+                  return fetch(url, params);
 
                 case 2:
                   rawResponse = _context.sent;

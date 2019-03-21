@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -878,16 +878,16 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ "./resources/js/classes/Products.js":
-/*!******************************************!*\
-  !*** ./resources/js/classes/Products.js ***!
-  \******************************************/
+/***/ "./resources/js/classes/ColorsCount.js":
+/*!*********************************************!*\
+  !*** ./resources/js/classes/ColorsCount.js ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Products; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ColorsCount; });
 /* harmony import */ var _Query__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Query */ "./resources/js/classes/Query.js");
 
 
@@ -899,94 +899,43 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
 
-var Products =
+var ColorsCount =
 /*#__PURE__*/
 function () {
-  function Products() {
-    _classCallCheck(this, Products);
+  function ColorsCount() {
+    _classCallCheck(this, ColorsCount);
 
     this.target = undefined;
-    this.url = undefined;
-    this.menuBoxEl = undefined;
-    this.menuBoxId = '';
-    this.menuBoxParam = '';
-    this.elId = 0;
   }
 
-  _createClass(Products, [{
-    key: "addProduct",
-    value: function addProduct() {
+  _createClass(ColorsCount, [{
+    key: "add",
+    value: function add() {
       var url = this.target.dataset.url;
-      var title = document.getElementById('title').value;
-      var description = document.getElementById('description').value;
-      var cost = document.getElementById('cost').value;
-      var section = document.getElementById('section').dataset.elId;
-      var manufacturer = document.getElementById('manufacturer').dataset.elId;
-      this.url = url + '?title=' + title + '&description=' + description + '&cost=' + cost + '&section=' + section + '&manufacturer=' + manufacturer;
-      _Query__WEBPACK_IMPORTED_MODULE_0__["default"].get(this.target, this.url);
-    }
-  }, {
-    key: "clickMenu",
-    value: function clickMenu() {
-      var menuBox = this.target.closest('.menu-box');
-      var titled = false;
+      var countRow = this.target.closest('tbody').getElementsByTagName('tr');
+      var results = {};
 
-      if (menuBox.classList.contains('menu-box-titled')) {
-        titled = true;
-      }
+      for (var i = 0; i < countRow.length; i++) {
+        var count = countRow[i].getElementsByClassName('count-value')[0].value;
 
-      var menuEls = menuBox.querySelectorAll('.menu-box-el');
-      Object.keys(menuEls).forEach(function (el) {
-        menuEls[el].classList.remove('active');
-
-        if (titled) {
-          Products.switchTitle(menuEls[el], false);
+        if (!count) {
+          count = 0;
         }
-      });
-      this.target.classList.add('active');
-      var section = undefined;
 
-      if (titled) {
-        section = Products.switchTitle(this.target);
+        results[i] = {
+          count: count,
+          color: countRow[i].getElementsByClassName('select-color')[0].dataset.colorId
+        };
       }
 
-      if (titled) {
-        this.menuBoxEl = section + ' / ' + this.target.innerHTML;
-      } else {
-        this.menuBoxEl = this.target.innerHTML;
-      }
-
-      this.elId = this.target.dataset.elId;
-      var modal = this.target.closest('.modal');
-      this.menuBoxId = modal.dataset.id;
-      this.menuBoxParam = modal.dataset.param;
-    }
-  }, {
-    key: "menuSelect",
-    value: function menuSelect() {
-      var button = document.querySelector('.menu-box-activator[data-id="' + this.menuBoxId + '"]' + '[data-param="' + this.menuBoxParam + '"]');
-      button.innerHTML = this.menuBoxEl;
-      button.dataset.elId = this.elId;
-    }
-  }], [{
-    key: "switchTitle",
-    value: function switchTitle(element) {
-      var add = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-      var title = element.closest('.menu-box-block').querySelector('.menu-box-title');
-
-      if (add) {
-        title.classList.remove('text-muted');
-        title.classList.add('text-primary');
-      } else {
-        title.classList.remove('text-primary');
-        title.classList.add('text-muted');
-      }
-
-      return title.innerHTML;
+      results = {
+        data: results
+      };
+      _Query__WEBPACK_IMPORTED_MODULE_0__["default"].post(this.target, url, results);
     }
   }]);
 
-  return Products;
+  return ColorsCount;
 }();
 
 
@@ -1106,14 +1055,14 @@ function () {
 
 /***/ }),
 
-/***/ 4:
-/*!************************************************!*\
-  !*** multi ./resources/js/classes/Products.js ***!
-  \************************************************/
+/***/ 8:
+/*!***************************************************!*\
+  !*** multi ./resources/js/classes/ColorsCount.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/vagrant/projects/eshop/resources/js/classes/Products.js */"./resources/js/classes/Products.js");
+module.exports = __webpack_require__(/*! /home/vagrant/projects/eshop/resources/js/classes/ColorsCount.js */"./resources/js/classes/ColorsCount.js");
 
 
 /***/ })

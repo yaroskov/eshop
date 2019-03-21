@@ -19,4 +19,5 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/classes/Query.js', 'public/js/classes')
     .js('resources/js/classes/User.js', 'public/js/classes')
     .js('resources/js/classes/Row.js', 'public/js/classes')
+    .js('resources/js/classes/ColorsCount.js', 'public/js/classes')
     .sass('resources/sass/app.scss', 'public/css');

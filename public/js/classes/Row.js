@@ -914,6 +914,32 @@ function () {
   _createClass(Query, null, [{
     key: "get",
     value: function get(target, url) {
+      var params = {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      };
+      Query.request(target, url, params);
+    }
+  }, {
+    key: "post",
+    value: function post(target, url, data) {
+      var params = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify(data)
+      };
+      Query.request(target, url, params);
+    }
+  }, {
+    key: "request",
+    value: function request(target, url, params) {
       var resultsBlock = target.closest('.content-wrapper').querySelector('.resultsBlock');
 
       var ajax =
@@ -928,13 +954,7 @@ function () {
               switch (_context.prev = _context.next) {
                 case 0:
                   _context.next = 2;
-                  return fetch(url, {
-                    method: 'GET',
-                    headers: {
-                      'Accept': 'application/json',
-                      'Content-Type': 'application/json'
-                    }
-                  });
+                  return fetch(url, params);
 
                 case 2:
                   rawResponse = _context.sent;

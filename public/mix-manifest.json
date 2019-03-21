@@ -3,6 +3,7 @@
     "/css/app.css": "/css/app.css",
     "/js/bootstrap.js": "/js/bootstrap.js",
     "/js/classes/AdminEvents.js": "/js/classes/AdminEvents.js",
+    "/js/classes/ColorsCount.js": "/js/classes/ColorsCount.js",
     "/js/classes/Products.js": "/js/classes/Products.js",
     "/js/classes/Query.js": "/js/classes/Query.js",
     "/js/classes/Row.js": "/js/classes/Row.js",
