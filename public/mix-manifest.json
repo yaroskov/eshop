@@ -1,7 +1,11 @@
 {
-    "/js/AdminCtrl.js": "/js/AdminCtrl.js",
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/bootstrap.js": "/js/bootstrap.js",
+    "/js/classes/AdminEvents.js": "/js/classes/AdminEvents.js",
+    "/js/classes/Products.js": "/js/classes/Products.js",
+    "/js/classes/Query.js": "/js/classes/Query.js",
+    "/js/classes/Row.js": "/js/classes/Row.js",
+    "/js/classes/User.js": "/js/classes/User.js",
     "/js/menu-url.js": "/js/menu-url.js"
 }

@@ -1,6 +1,6 @@
 @section('admin_add')
     <script src="{{ asset('js/menu-url.js') }}"></script>
-    <script src="{{ asset('js/AdminCtrl.js') }}"></script>
+    <script src="{{ asset('js/classes/AdminEvents.js') }}"></script>
 @endsection
 
 @extends('layouts.app')

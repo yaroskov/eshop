@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -878,15 +878,131 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ "./resources/js/AdminCtrl.js":
-/*!***********************************!*\
-  !*** ./resources/js/AdminCtrl.js ***!
-  \***********************************/
-/*! no exports provided */
+/***/ "./resources/js/classes/Products.js":
+/*!******************************************!*\
+  !*** ./resources/js/classes/Products.js ***!
+  \******************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Products; });
+/* harmony import */ var _Query__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Query */ "./resources/js/classes/Query.js");
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var Products =
+/*#__PURE__*/
+function () {
+  function Products() {
+    _classCallCheck(this, Products);
+
+    this.target = undefined;
+    this.url = undefined;
+    this.menuBoxEl = undefined;
+    this.menuBoxId = '';
+    this.menuBoxParam = '';
+    this.elId = 0;
+  }
+
+  _createClass(Products, [{
+    key: "addProduct",
+    value: function addProduct() {
+      var url = this.target.dataset.url;
+      var title = document.getElementById('title').value;
+      var description = document.getElementById('description').value;
+      var cost = document.getElementById('cost').value;
+      var section = document.getElementById('section').dataset.elId;
+      var manufacturer = document.getElementById('manufacturer').dataset.elId;
+      this.url = url + '?title=' + title + '&description=' + description + '&cost=' + cost + '&section=' + section + '&manufacturer=' + manufacturer;
+      _Query__WEBPACK_IMPORTED_MODULE_0__["default"].get(this.target, this.url);
+    }
+  }, {
+    key: "clickMenu",
+    value: function clickMenu() {
+      var menuBox = this.target.closest('.menu-box');
+      var titled = false;
+
+      if (menuBox.classList.contains('menu-box-titled')) {
+        titled = true;
+      }
+
+      var menuEls = menuBox.querySelectorAll('.menu-box-el');
+      Object.keys(menuEls).forEach(function (el) {
+        menuEls[el].classList.remove('active');
+
+        if (titled) {
+          Products.switchTitle(menuEls[el], false);
+        }
+      });
+      this.target.classList.add('active');
+      var section = undefined;
+
+      if (titled) {
+        section = Products.switchTitle(this.target);
+      }
+
+      if (titled) {
+        this.menuBoxEl = section + ' / ' + this.target.innerHTML;
+      } else {
+        this.menuBoxEl = this.target.innerHTML;
+      }
+
+      this.elId = this.target.dataset.elId;
+      var modal = this.target.closest('.modal');
+      this.menuBoxId = modal.dataset.id;
+      this.menuBoxParam = modal.dataset.param;
+    }
+  }, {
+    key: "menuSelect",
+    value: function menuSelect() {
+      var button = document.querySelector('.menu-box-activator[data-id="' + this.menuBoxId + '"]' + '[data-param="' + this.menuBoxParam + '"]');
+      button.innerHTML = this.menuBoxEl;
+      button.dataset.elId = this.elId;
+    }
+  }], [{
+    key: "switchTitle",
+    value: function switchTitle(element) {
+      var add = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      var title = element.closest('.menu-box-block').querySelector('.menu-box-title');
+
+      if (add) {
+        title.classList.remove('text-muted');
+        title.classList.add('text-primary');
+      } else {
+        title.classList.remove('text-primary');
+        title.classList.add('text-muted');
+      }
+
+      return title.innerHTML;
+    }
+  }]);
+
+  return Products;
+}();
+
+
+
+/***/ }),
+
+/***/ "./resources/js/classes/Query.js":
+/*!***************************************!*\
+  !*** ./resources/js/classes/Query.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Query; });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -903,26 +1019,17 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var AdminCtrl =
+var Query =
 /*#__PURE__*/
 function () {
-  function AdminCtrl() {
-    _classCallCheck(this, AdminCtrl);
-
-    this.target = undefined;
-    this.url = undefined;
-    this.menuBoxEl = undefined;
-    this.menuBoxId = '';
-    this.menuBoxParam = '';
-    this.elId = 0;
+  function Query() {
+    _classCallCheck(this, Query);
   }
 
-  _createClass(AdminCtrl, [{
-    key: "query",
-    value: function query() {
-      var _this2 = this;
-
-      var resultsBlock = this.target.closest('.content-wrapper').querySelector('.resultsBlock');
+  _createClass(Query, null, [{
+    key: "get",
+    value: function get(target, url) {
+      var resultsBlock = target.closest('.content-wrapper').querySelector('.resultsBlock');
 
       var ajax =
       /*#__PURE__*/
@@ -936,7 +1043,7 @@ function () {
               switch (_context.prev = _context.next) {
                 case 0:
                   _context.next = 2;
-                  return fetch(_this2.url, {
+                  return fetch(url, {
                     method: 'GET',
                     headers: {
                       'Accept': 'application/json',
@@ -970,148 +1077,23 @@ function () {
         console.log(error);
       });
     }
-  }, {
-    key: "addProduct",
-    value: function addProduct() {
-      var url = this.target.dataset.url;
-      var title = document.getElementById('title').value;
-      var description = document.getElementById('description').value;
-      var cost = document.getElementById('cost').value;
-      var section = document.getElementById('section').dataset.elId;
-      var manufacturer = document.getElementById('manufacturer').dataset.elId;
-      this.url = url + '?title=' + title + '&description=' + description + '&cost=' + cost + '&section=' + section + '&manufacturer=' + manufacturer;
-      this.query();
-    }
-  }, {
-    key: "addUser",
-    value: function addUser() {
-      var url = this.target.dataset.url;
-      var form = this.target.closest('form');
-      var name = form.querySelector('#name').value;
-      var password = form.querySelector('#password').value;
-      var email = form.querySelector('#email').value;
-      var userType = form.querySelector('#userType').value;
-      this.url = url + '?name=' + name + '&email=' + email + '&password=' + password + '&userType=' + userType;
-      this.query();
-    }
-  }, {
-    key: "addRow",
-    value: function addRow(sectionId) {
-      var url = this.target.dataset.url;
-      var data = this.target.closest('.form-group').querySelector('input').value;
-      this.url = url + '?data=' + data + '&sectionId=' + sectionId;
-      this.query();
-    }
-  }, {
-    key: "deleteRow",
-    value: function deleteRow() {
-      var url = this.target.dataset.url;
-      var id = this.target.dataset.id;
-      this.url = url + '?id=' + id;
-      this.query();
-    }
-  }, {
-    key: "clickMenu",
-    value: function clickMenu() {
-      var menuBox = this.target.closest('.menu-box');
-      var titled = false;
-
-      if (menuBox.classList.contains('menu-box-titled')) {
-        titled = true;
-      }
-
-      var menuEls = menuBox.querySelectorAll('.menu-box-el');
-      Object.keys(menuEls).forEach(function (el) {
-        menuEls[el].classList.remove('active');
-
-        if (titled) {
-          AdminCtrl.switchTitle(menuEls[el], false);
-        }
-      });
-      this.target.classList.add('active');
-      var section = undefined;
-
-      if (titled) {
-        section = AdminCtrl.switchTitle(this.target);
-      }
-
-      if (titled) {
-        this.menuBoxEl = section + ' / ' + this.target.innerHTML;
-      } else {
-        this.menuBoxEl = this.target.innerHTML;
-      }
-
-      this.elId = this.target.dataset.elId;
-      var modal = this.target.closest('.modal');
-      this.menuBoxId = modal.dataset.id;
-      this.menuBoxParam = modal.dataset.param;
-    }
-  }, {
-    key: "menuSelect",
-    value: function menuSelect() {
-      var button = document.querySelector('.menu-box-activator[data-id="' + this.menuBoxId + '"]' + '[data-param="' + this.menuBoxParam + '"]');
-      button.innerHTML = this.menuBoxEl;
-      button.dataset.elId = this.elId;
-    }
-  }, {
-    key: "events",
-    value: function events() {
-      var _this = this;
-
-      window.addEventListener('click', function (event) {
-        _this.target = event.target;
-
-        if (_this.target.classList.contains('add-row')) {
-          _this.addRow(0);
-        } else if (_this.target.classList.contains('add-sub-row')) {
-          _this.addRow(_this.target.dataset.sectionId);
-        } else if (_this.target.classList.contains('delete-row')) {
-          _this.deleteRow();
-        } else if (_this.target.classList.contains('add-user')) {
-          _this.addUser();
-        } else if (_this.target.classList.contains('add-product')) {
-          _this.addProduct();
-        } else if (_this.target.classList.contains('menu-box-el')) {
-          _this.clickMenu();
-        } else if (_this.target.classList.contains('menu-box-ok')) {
-          _this.menuSelect();
-        }
-      });
-    }
-  }], [{
-    key: "switchTitle",
-    value: function switchTitle(element) {
-      var add = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-      var title = element.closest('.menu-box-block').querySelector('.menu-box-title');
-
-      if (add) {
-        title.classList.remove('text-muted');
-        title.classList.add('text-primary');
-      } else {
-        title.classList.remove('text-primary');
-        title.classList.add('text-muted');
-      }
-
-      return title.innerHTML;
-    }
   }]);
 
-  return AdminCtrl;
+  return Query;
 }();
 
-var admin = new AdminCtrl();
-admin.events();
+
 
 /***/ }),
 
-/***/ 3:
-/*!*****************************************!*\
-  !*** multi ./resources/js/AdminCtrl.js ***!
-  \*****************************************/
+/***/ 4:
+/*!************************************************!*\
+  !*** multi ./resources/js/classes/Products.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/vagrant/projects/eshop/resources/js/AdminCtrl.js */"./resources/js/AdminCtrl.js");
+module.exports = __webpack_require__(/*! /home/vagrant/projects/eshop/resources/js/classes/Products.js */"./resources/js/classes/Products.js");
 
 
 /***/ })
