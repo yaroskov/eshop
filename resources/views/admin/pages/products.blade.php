@@ -70,9 +70,20 @@
                                 </button>
                             </div>
 
-                            <div class="resultsBlock">
-                                @include('admin.tables.count-colors')
-                            </div>
+                            <table class="table table-borderless mb-1">
+                                <thead>
+                                <tr>
+                                    <th class="p-1" colspan="3">Count: <span class="total-count">0</span></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="p-1"><div class="select-color preset-box" data-color-id="0"></div></td>
+                                    <td class="p-1"><input class="count-value form-control form-control-sm" type="text" placeholder="0"></td>
+                                    <td class="p-1"><button class="add-count btn btn-sm btn-success" data-url="/admin/products/color-counts/add">+</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
 
                         </div>
 

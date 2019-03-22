@@ -1,7 +1,5 @@
 'use strict';
 
-import Query from './Query';
-
 export default class ColorsCount {
 
     constructor() {
@@ -10,8 +8,6 @@ export default class ColorsCount {
     }
 
     add() {
-
-        let url = this.target.dataset.url;
 
         let countRow = this.target.closest('tbody').getElementsByTagName('tr');
 
@@ -31,8 +27,61 @@ export default class ColorsCount {
             };
         }
 
-        results = {data: results};
+        let template = '';
 
-        Query.post(this.target, url, results);
+        let totalCount = 0;
+
+        Object.keys(results).forEach(function (i) {
+
+            let count = ColorsCount.priceConverter(results[i].count);
+
+            totalCount += count;
+
+            template += ColorsCount.createdRow(results[i].color, count);
+        });
+
+        console.log(totalCount);
+
+        let totalCountEl = this.target.closest('table').getElementsByClassName('total-count')[0];
+
+        totalCountEl.textContent = totalCount.toString();
+
+        template += ColorsCount.newRow(0);
+
+        this.target.closest('tbody').innerHTML = template;
+    }
+
+    delete() {
+
+        this.target.closest('tr').remove();
+    }
+
+    static priceConverter(price) {
+
+        let value = parseInt(price);
+
+        if (!value || isNaN(value)) {
+            return 0;
+        } else {
+            return value;
+        }
+    }
+
+    static createdRow(color, count) {
+
+        return "<tr>" +
+            "<td class=\"p-1\"><div class=\"select-color preset-box\" data-color-id=\"" + color + "\"></div></td>" +
+            "<td class=\"p-1\"><input class=\"count-value form-control form-control-sm\" type=\"text\" value=\"" + count + "\" placeholder=\"0\"></td>" +
+            "<td class=\"p-1\"><button class=\"delete-count btn btn-sm btn-primary\">&times;</button></td>" +
+            "</tr>";
+    }
+
+    static newRow(color) {
+
+        return "<tr>" +
+            "<td class=\"p-1\"><div class=\"select-color preset-box\" data-color-id=\"" + color + "\"></div></td>" +
+            "<td class=\"p-1\"><input class=\"count-value form-control form-control-sm\" type=\"text\" value=\"\" placeholder=\"0\"></td>" +
+            "<td class=\"p-1\"><button class=\"add-count btn btn-sm btn-success\">+</button></td>" +
+            "</tr>";
     }
 }

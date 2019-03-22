@@ -62,6 +62,11 @@ class AdminEvents {
                 _this.colorsCount.target = target;
                 _this.colorsCount.add();
 
+            } else if (target.classList.contains('delete-count')) {
+
+                _this.colorsCount.target = target;
+                _this.colorsCount.delete();
+
             }
         });
     }
